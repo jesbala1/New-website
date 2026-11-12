@@ -396,12 +396,3 @@ a:hover {
     transition: none;
   }
 }
-
-/* Mint green homepage only */
-body.homepage {
-  background: #B9DCC5;
-}
-
-body.homepage .wrap {
-  background: transparent;
-}
