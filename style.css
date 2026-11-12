@@ -396,3 +396,8 @@ a:hover {
     transition: none;
   }
 }
+
+/* Mint green homepage only */
+body:has(.sun-home) {
+  background-color: #B9DCC5;
+}
