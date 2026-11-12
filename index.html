@@ -1,6 +1,7 @@
 
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,13 +13,16 @@
 
   <title>JESBALA</title>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Version number helps Safari load updated CSS -->
+  <link rel="stylesheet" href="style.css?v=3">
+
   <script src="sun.js" defer></script>
 </head>
 
 <body>
   <div class="wrap">
 
+    <!-- Website title -->
     <header class="top">
       <a class="brand" href="index.html">JESBALA</a>
     </header>
@@ -29,6 +33,7 @@
       <nav class="home-links" aria-label="Main navigation">
 
         <a href="feel-me.html">Feel Me</a>
+
         <a href="hear-me.html">Hear Me</a>
 
         <a href="rhythms.html" class="rhythms-link">
@@ -37,6 +42,7 @@
         </a>
 
         <a href="whisky.html">Whisky</a>
+
         <a href="notes-app.html">Notes App</a>
 
         <!-- Secondary navigation -->
@@ -55,7 +61,10 @@
         aria-label="Green halftone sun. Activate to change its shape; seven shapes available."
         title="Click to change shape"
       >
-        <canvas id="sun-canvas" aria-hidden="true"></canvas>
+        <canvas
+          id="sun-canvas"
+          aria-hidden="true"
+        ></canvas>
       </button>
 
       <!-- Name and location -->
