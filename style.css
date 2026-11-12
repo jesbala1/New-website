@@ -4,6 +4,7 @@
    ======================================== */
 
 /* General */
+
 * {
   box-sizing: border-box;
 }
@@ -30,6 +31,7 @@ a:hover {
 }
 
 /* Main layout */
+
 .wrap {
   max-width: 1280px;
   margin: auto;
@@ -45,6 +47,7 @@ a:hover {
 }
 
 /* JESBALA title */
+
 .brand {
   font-size: 17px;
   font-weight: 400;
@@ -56,11 +59,14 @@ a:hover {
 
 .brand:hover,
 .brand:focus-visible {
-  color: #0D8CFF;
+  color: #167d35;
   text-decoration: none;
 }
 
-/* Homepage */
+/* ========================================
+   HOMEPAGE NAVIGATION
+   ======================================== */
+
 .home {
   min-height: 72vh;
 }
@@ -86,13 +92,46 @@ a:hover {
   text-decoration: none;
 }
 
+/* Long navigation title with hanging indent */
+
+.rhythms-link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
+  line-height: 1.5;
+}
+
+.rhythms-link span {
+  display: block;
+}
+
+.rhythms-link span:last-child {
+  padding-left: 16px;
+}
+
+/* Secondary navigation */
+
+.nav-secondary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+/* Name and location */
+
 .home-note {
   margin-top: 100px;
   color: #666;
   font-size: 12px;
 }
 
-/* Page headings */
+/* ========================================
+   PAGE CONTENT
+   ======================================== */
+
 .page-heading {
   margin: 72px 0 35px;
   font-size: 18px;
@@ -105,6 +144,7 @@ a:hover {
 }
 
 /* Artwork and photography grids */
+
 .archive {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -156,6 +196,7 @@ a:hover {
 }
 
 /* Individual project pages */
+
 .project {
   max-width: 960px;
 }
@@ -176,7 +217,30 @@ a:hover {
   margin-top: 40px;
 }
 
+/* Text content */
+
+.copy {
+  max-width: 640px;
+}
+
+.copy p {
+  margin: 0 0 18px;
+}
+
+/* Image placeholders */
+
+.placeholder {
+  display: block;
+  width: 100%;
+  background: #f4f4f4;
+}
+
+.placeholder text {
+  font-family: Arial, sans-serif;
+}
+
 /* Footer */
+
 .footer {
   margin-top: 120px;
   padding-top: 16px;
@@ -187,26 +251,6 @@ a:hover {
   flex-wrap: wrap;
   font-size: 12px;
   color: #555;
-}
-
-/* Text content */
-.copy {
-  max-width: 640px;
-}
-
-.copy p {
-  margin: 0 0 18px;
-}
-
-/* Image placeholders */
-.placeholder {
-  display: block;
-  width: 100%;
-  background: #f4f4f4;
-}
-
-.placeholder text {
-  font-family: Arial, sans-serif;
 }
 
 /* ========================================
@@ -266,6 +310,7 @@ a:hover {
    ======================================== */
 
 @media (max-width: 700px) {
+
   .wrap {
     padding: 22px 18px 55px;
   }
@@ -300,6 +345,8 @@ a:hover {
     margin-top: 70px;
   }
 
+  /* Mobile sun positioning */
+
   .sun-home {
     min-height: 750px;
   }
@@ -317,12 +364,26 @@ a:hover {
   }
 
   .sun-home .home-note {
-    margin-top: 490px;
+    margin-top: 340px;
+  }
+
+  /* Prevent long title from overflowing */
+
+  .rhythms-link {
+    max-width: 100%;
+  }
+
+  .rhythms-link span {
+    overflow-wrap: break-word;
   }
 }
 
-/* Accessibility */
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-behavior: auto;
   }
@@ -332,28 +393,3 @@ a:hover {
     transition: none;
   }
 }
-
-
-/* Long navigation title */
-
-.rhythms-link {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.5;
-}
-
-.rhythms-link span:last-child {
-  padding-left: 16px;
-}
-
-/* Secondary navigation */
-
-.nav-secondary {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  margin-top: 32px;
-}
-
