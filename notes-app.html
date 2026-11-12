@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Notes App — writing by JESBALA" name="description"/>
+<title>Notes App — JESBALA</title>
+<link href="style.css?v=3" rel="stylesheet"/>
+<style>
+    /* Notes App only — does not affect the rest of the website */
+    .notes-main { max-width: 850px; margin: 90px auto 100px; }
+    .notes-tabs { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 0; margin: 0 auto 28px; }
+    .notes-tab { border: 0; padding: 3px 0; background: none; color: #777; font: inherit; font-size: 15px; cursor: pointer; transition: color .2s ease; }
+    .notes-tab:hover, .notes-tab:focus-visible { color: #167d35; }
+    .notes-tab[aria-selected="true"] { color: #111; text-decoration: underline; text-underline-offset: 4px; }
+    .notes-separator { color: #999; padding: 0 9px; user-select: none; }
+    .notes-entry { max-width: 590px; margin: 0 auto; }
+    .notes-entry[hidden] { display: none; }
+    .notes-entry h1 { margin: 0 0 40px; font-size: 19px; font-weight: 400; text-align: center; }
+    .notes-prose { font-size: 15px; line-height: 1.9; }
+    .notes-prose p { margin: 0 0 1.6em; }
+    .notes-date { margin-top: 55px; color: #777; font-size: 12px; text-align: right; }
+    .notes-list { list-style: none; max-width: 590px; margin: 0 auto; padding: 0; font-size: 15px; line-height: 1.9; color: #111; }
+    .notes-list li { margin: 0 0 0.85em; padding: 0; }
+    /* Withheld words are never included in the page source. */
+    .redacted-entry { max-width: 590px; margin: 0 auto; }
+    .redacted-entry p { font-size: 15px; line-height: 2; margin: 0 0 1.75em; }
+    .redacted-entry .gap { display: inline-block; vertical-align: -0.08em; height: .86em; background: transparent; margin: 0 .14em; }
+    .redacted-entry .gap.short { width: 2.8em; }
+    .redacted-entry .gap.medium { width: 5.6em; }
+    .redacted-entry .gap.long { width: 9em; max-width: 45%; }
+    .redacted-entry .diary-transition { text-align: center; font-size: 14px; font-style: italic; font-weight: 400; color: #555; margin: 100px 0; }
+    .redacted-entry .entry-subtitle { color: #777; font-size: 12px; margin: 0 0 2em; }
+    .redacted-entry .fragment { margin: 3em 0; padding-left: 8%; }
+    .redacted-entry .fragment.right { padding-left: 0; padding-right: 8%; text-align: right; }
+    .redacted-entry .anon-note { margin-top: 48px; color: #777; font-size: 12px; font-style: italic; }
+    .notes-placeholder { text-align: center; color: #888; font-size: 13px; }
+    @media (max-width: 700px) {
+      .notes-main { margin-top: 65px; }
+      .notes-tabs { gap: 0; margin-bottom: 24px; }
+      .notes-separator { padding: 0 6px; }
+      .notes-tab { font-size: 14px; }
+      .notes-entry { max-width: 100%; }
+      .notes-prose { font-size: 15px; line-height: 1.85; }
+    }
+    @media (prefers-reduced-motion: reduce) { .notes-tab { transition: none; } }
+  
+    /* Additional quiet spaces in M 64 */
+    .redacted-entry .gap { min-height: 1em; }
+    .redacted-entry .gap.short { width: 3.4em; }
+    .redacted-entry .gap.medium { width: 7.2em; }
+    .redacted-entry .gap.long { width: 11em; max-width: 55%; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><a class="brand" href="index.html">JESBALA</a></header>
+<main class="notes-main">
+<nav aria-label="Writing entries" class="notes-tabs" role="tablist">
+<button aria-controls="entry-pasadena" aria-selected="true" class="notes-tab" id="tab-pasadena" role="tab" tabindex="0" type="button">Pasadena</button>
+<span aria-hidden="true" class="notes-separator">/</span>
+<button aria-controls="entry-m64" aria-selected="false" class="notes-tab" id="tab-m64" role="tab" tabindex="-1" type="button">M 64</button>
+<span aria-hidden="true" class="notes-separator">/</span>
+<button aria-controls="entry-green" aria-selected="false" class="notes-tab" id="tab-green" role="tab" tabindex="-1" type="button">Green</button>
+<span aria-hidden="true" class="notes-separator">/</span>
+<button aria-controls="entry-season" aria-selected="false" class="notes-tab" id="tab-season" role="tab" tabindex="-1" type="button">Season After Season</button>
+</nav>
+<article aria-labelledby="tab-pasadena" class="notes-entry" id="entry-pasadena" role="tabpanel" tabindex="0">
+<div class="notes-prose">
+<p>Josh stared softly into the aquamarine eyes in front of him and realized he was being pulled like a magnet eager for metal.</p>
+<p>His lips were suddenly met with the gentle brush of Matthew's breath. He could smell the cookies and cream ice cream they had eaten a couple of hours ago</p>
+<p>They had raced back from Pasadena to get Matthew back to his car before the parking time expired at 12. Josh, first pressing the car's hazard lights, leaned in and Matthew followed. Their pulses seemed to synchronize on that windy March night to a rhythm that reverberated across the avenue and tended the flame in Josh's heart.</p>
+<p>They embraced for what felt too short.</p>
+<p>“You gotta go breathed Josh”, tracing the sleeve of Matthew's black crewneck sweater.</p>
+<p>“I know,”</p>
+<p>Matthew surrendered.</p>
+<p>He sat still for another few seconds and then got out, where the car's flashing lights encapsulated him in a crimson glow.</p>
+<p>Josh watched Matthew walk away through his rearview mirror, his car left with the perfume of a budding romance. The clock struck 12 as Josh's lover descended the stairs into the parking lot.</p>
+</div>
+<p class="notes-date"><time datetime="2027-04-26T17:43">April 26, 2026 5:43 PM</time></p>
+</article>
+<article aria-labelledby="tab-m64" class="notes-entry" hidden="" id="entry-m64" role="tabpanel" tabindex="0">
+<div class="redacted-entry">
+<p>We matched on Tinder, I think, on April 21, and he <span aria-hidden="true" class="gap medium"></span> me. He asked something along the lines <span aria-hidden="true" class="gap long"></span> I was doing pretty good. He asked where I was from, and I said I was from <span aria-hidden="true" class="gap medium"></span> a semester. <span aria-hidden="true" class="gap short"></span> exactly what he said next, and I can’t go back to the messages because I unmatched with him <span aria-hidden="true" class="gap long"></span> weekend.</p>
+<p>I <span aria-hidden="true" class="gap short"></span> him that Friday(?) because I had plans to <span aria-hidden="true" class="gap long"></span> to town, and I <span aria-hidden="true" class="gap long"></span> that moment or <span aria-hidden="true" class="gap short"></span> and our flat went to this place on Friday called 1154 where we ate pasta in a club ambience. <span aria-hidden="true" class="gap long"></span> Just remembered that before this, Maya and <span aria-hidden="true" class="gap medium"></span> Le Cordon Bleu, which is near Ivy, while Noah waited <span aria-hidden="true" class="gap medium"></span> night.</p>
+<p>I drank 2 and half cups of rose when <span aria-hidden="true" class="gap medium"></span> flat. It was my first <span aria-hidden="true" class="gap long"></span> I drank, it was just one drink.</p>
+<p>The <span aria-hidden="true" class="gap short"></span> arrives, and Theo and I head over to 7G, <span aria-hidden="true" class="gap short"></span> drink and go to town. Maya came home from work <span aria-hidden="true" class="gap long"></span> drinking. <span aria-hidden="true" class="gap short"></span> Theo and <span aria-hidden="true" class="gap short"></span> guy jerking <span aria-hidden="true" class="gap short"></span> way to town where the <span aria-hidden="true" class="gap short"></span> off for construction.</p>
+<p>Never in <span aria-hidden="true" class="gap long"></span> ugh still nasty. I had fun at <span aria-hidden="true" class="gap long"></span> and climbing a pole. Our night ends at 4am after some interesting things to say the least <span aria-hidden="true" class="gap short"></span> Circus. Oof.</p>
+<p>We get back to 7G’s flat and I <span aria-hidden="true" class="gap short"></span> that Maya had brought me <span aria-hidden="true" class="gap medium"></span> $8nz, lowkey annoying), and Theo and I head back to our flat, where <span aria-hidden="true" class="gap medium"></span> phone. <span aria-hidden="true" class="gap medium"></span> Long story short, since the first <span aria-hidden="true" class="gap medium"></span> 27) Clara found a liking to <span aria-hidden="true" class="gap long"></span> he started getting to know <span aria-hidden="true" class="gap medium"></span> couch almost every weekend because Noah gave her the <span aria-hidden="true" class="gap short"></span> here in 4C so she wouldn’t <span aria-hidden="true" class="gap medium"></span> the way where she lived in Miramar.</p>
+<p>This and other things Noah would do most likely contributed to <span aria-hidden="true" class="gap medium"></span> that night the rest of us <span aria-hidden="true" class="gap short"></span> town, Clara told me that <span aria-hidden="true" class="gap long"></span> told me that he <span aria-hidden="true" class="gap medium"></span> the same way. That was rough.</p>
+<p><span aria-hidden="true" class="gap long"></span></p>
+<p>Going back to Elliot’s message <span aria-hidden="true" class="gap short"></span> I didn’t pay much attention to it at the beginning of the <span aria-hidden="true" class="gap long"></span> don’t remember rn. It wasn’t until Tuesday afternoon when <span aria-hidden="true" class="gap medium"></span> that I went on Tinder for some reason and was like let’s see what’s up. I saw Elliot’s message and <span aria-hidden="true" class="gap long"></span> know his intentions (lol and still really don’t). A part of me <span aria-hidden="true" class="gap long"></span> to.</p>
+<p>The problem for me was that I had left <span aria-hidden="true" class="gap medium"></span> over a week, so I was nervous <span aria-hidden="true" class="gap medium"></span> about <span aria-hidden="true" class="gap long"></span> sorry for not replying earlier and <span aria-hidden="true" class="gap short"></span> had just gotten back from hanging out with friends. <span aria-hidden="true" class="gap long"></span> I think <span aria-hidden="true" class="gap short"></span> was like it’s <span aria-hidden="true" class="gap short"></span> (idk).</p>
+<p>He then asked if I was Brazillian because he only had known <span aria-hidden="true" class="gap long"></span> the week prior when <span aria-hidden="true" class="gap short"></span> asked what I was <span aria-hidden="true" class="gap long"></span> to his question of what I was doing for the weekend. Oop.</p>
+<p>Anyway, the point is is that he said <span aria-hidden="true" class="gap medium"></span> an ick because after, <span aria-hidden="true" class="gap short"></span> I was <span aria-hidden="true" class="gap medium"></span> like “I like <span aria-hidden="true" class="gap medium"></span> this should’ve stopped me from even continuing the <span aria-hidden="true" class="gap medium"></span> me fetish vibes. <span aria-hidden="true" class="gap short"></span> He <span aria-hidden="true" class="gap medium"></span> was with him that his high school bf was Argentinian-Kiwi).</p>
+<p>More messages were <span aria-hidden="true" class="gap long"></span> here in Wellington, how <span aria-hidden="true" class="gap medium"></span> at vic but left after a month because it wasn’t for him, and he was figuring out what to do for the month after, then he got <span aria-hidden="true" class="gap medium"></span> the treasury department until he was leaving in 4 / 5 weeks <span aria-hidden="true" class="gap long"></span> how <span aria-hidden="true" class="gap long"></span> Elliot said that he actually didn’t like the buildings here besides the old bank <span aria-hidden="true" class="gap long"></span> buildings in Europe. Interesting, I guess.</p>
+<p>He <span aria-hidden="true" class="gap medium"></span> to hangout and I’m like what are you thinking? <span aria-hidden="true" class="gap long"></span> I’m like <span aria-hidden="true" class="gap medium"></span> night? He likes that idea and says he’s <span aria-hidden="true" class="gap short"></span> that same night, Tuesday the 2nd.</p>
+<p>I <span aria-hidden="true" class="gap medium"></span> tomorrow?” We agree <span aria-hidden="true" class="gap medium"></span> I forgot what else we talked <span aria-hidden="true" class="gap medium"></span> like to go on a walk before the <span aria-hidden="true" class="gap medium"></span> place to get aquainted. I’m like “let’s do that.”</p>
+<p><span aria-hidden="true" class="gap medium"></span> I forget who is the one to send the message in the afternoon asking what time we’d like to hangout. 7pm is good for me and he <span aria-hidden="true" class="gap long"></span> asks where I’m based and <span aria-hidden="true" class="gap short"></span> I’m in the Mount Cook area and he’s like <span aria-hidden="true" class="gap long"></span> the walk?” He replies with “It seems like <span aria-hidden="true" class="gap long"></span> for a drink, but I don’t really mind.</p>
+<p>Maybe in <span aria-hidden="true" class="gap medium"></span> He says “Well if it’s not raining let’s go for a walk.” I’m like <span aria-hidden="true" class="gap medium"></span> gets closer to 7. But I’d be interested in drinks <span aria-hidden="true" class="gap long"></span> two sentences (message bubbles on Tinder), and responds with “Not really for night time! <span aria-hidden="true" class="gap long"></span></p>
+<p>It’s finally 7, and I’m like it looks like <span aria-hidden="true" class="gap medium"></span> meet at Moon, a bar <span aria-hidden="true" class="gap medium"></span> agree.</p>
+<p>Before I head out I <span aria-hidden="true" class="gap short"></span> what <span aria-hidden="true" class="gap medium"></span> and I share my live location on Snapchat with Riley. <span aria-hidden="true" class="gap long"></span> the thing in case it gets weird. Cool. I take the bus <span aria-hidden="true" class="gap short"></span> Moon <span aria-hidden="true" class="gap short"></span> there before the said time, <span aria-hidden="true" class="gap medium"></span> the walking plans changed due to the rain.</p>
+<p><span aria-hidden="true" class="gap short"></span> So, I <span aria-hidden="true" class="gap medium"></span> Moon, and while sat, a guy sits next to me asking if I’m ok with him smoking weed, and <span aria-hidden="true" class="gap long"></span> thinking, is this Elliot, and have I been catfished?</p>
+<p>Like don’t get me wrong this guy isn’t all <span aria-hidden="true" class="gap short"></span> he just wasn’t what Elliot was <span aria-hidden="true" class="gap long"></span> some several minutes later and he’s like the pictures. We hug and head inside Moon.</p>
+<p>I ask him if <span aria-hidden="true" class="gap medium"></span> and <span aria-hidden="true" class="gap long"></span> make small talk about how our days have been going, his energy is <span aria-hidden="true" class="gap medium"></span> Riley 911. While we are waiting for the bartendar to attend us Elliot asks <span aria-hidden="true" class="gap medium"></span> had been in Wellington. Before he said this he said something like “This <span aria-hidden="true" class="gap long"></span> proceeded to ask if I’ve met <span aria-hidden="true" class="gap short"></span> here.</p>
+<p>I say no and that he’s been the first I’ve <span aria-hidden="true" class="gap long"></span> really found anyone attractive or interesting, but you’re really cute \*smiles\* I’m <span aria-hidden="true" class="gap medium"></span> (lol). <span aria-hidden="true" class="gap long"></span> We get a table in the <span aria-hidden="true" class="gap short"></span> place where we’re close enough to see the <span aria-hidden="true" class="gap medium"></span> speak.</p>
+<p>Elliot tells <span aria-hidden="true" class="gap medium"></span> like someone he knew from school way back when. <span aria-hidden="true" class="gap medium"></span> Bruh why <span aria-hidden="true" class="gap medium"></span> to continue <span aria-hidden="true" class="gap medium"></span> bit <span aria-hidden="true" class="gap medium"></span> but give him an opportunity to redeem himself from what he had just said.</p>
+<p>Damn I really did that. Usually I take the person less seriously <span aria-hidden="true" class="gap medium"></span> that, and probably wouldn’t <span aria-hidden="true" class="gap long"></span> part of <span aria-hidden="true" class="gap long"></span> Bruh that wanting to cry but you don’t want to cry feeling in the throat just came.</p>
+<p>Gosh. I literally need to read what <span aria-hidden="true" class="gap medium"></span> him and his friend. <span aria-hidden="true" class="gap short"></span> together, fr. Ok so tangent I guess: It had been since December when I talked <span aria-hidden="true" class="gap long"></span> person.</p>
+<p>Being <span aria-hidden="true" class="gap medium"></span> good, or at least found attractive.</p>
+<p>Elliot asked <span aria-hidden="true" class="gap long"></span> and <span aria-hidden="true" class="gap short"></span> talked more about living in the US, how LA was. How life back home felt more fastpaced but there were a lot of things to do. He said he wanted to visit LA in <span aria-hidden="true" class="gap long"></span> remembered that we also ordered <span aria-hidden="true" class="gap medium"></span> and that <span aria-hidden="true" class="gap medium"></span> they have here.</p>
+<p>We ate <span aria-hidden="true" class="gap medium"></span> first round of drinks. <span aria-hidden="true" class="gap short"></span> He tells me he’s sorry if <span aria-hidden="true" class="gap medium"></span> cuz <span aria-hidden="true" class="gap short"></span> you think I like spicy stuff? But like I say it <span aria-hidden="true" class="gap short"></span> mad way <span aria-hidden="true" class="gap short"></span> describe it.</p>
+<p>It’s awkward <span aria-hidden="true" class="gap short"></span> a bit <span aria-hidden="true" class="gap long"></span> keep talking and he asks if I’ve had <span aria-hidden="true" class="gap medium"></span> so he’s like do you wanna try something here and I’m like sure.</p>
+<p><span aria-hidden="true" class="gap medium"></span> I think I had already <span aria-hidden="true" class="gap long"></span> more drinks, and I’m like no I’m good. <span aria-hidden="true" class="gap medium"></span> talk about his life here in NZ and where he grew up and stuff. He pulls out google maps on <span aria-hidden="true" class="gap medium"></span> the places <span aria-hidden="true" class="gap short"></span> talking about, and points to where he <span aria-hidden="true" class="gap medium"></span> good to be, and where he went <span aria-hidden="true" class="gap medium"></span> went.</p>
+<p>Our pizza <span aria-hidden="true" class="gap long"></span> more about life in Auckland but it’s <span aria-hidden="true" class="gap medium"></span> in my memory. We keep talking and I keep asking questions, back and forth. <span aria-hidden="true" class="gap long"></span></p>
+<p>I say I’m down that way on Taranaki St. <span aria-hidden="true" class="gap short"></span> a look <span aria-hidden="true" class="gap long"></span> way of saying that, and he pronounces <span aria-hidden="true" class="gap short"></span> supposedly said. The maori pronunciation.</p>
+<p>He’s like I’m used to saying that word <span aria-hidden="true" class="gap medium"></span> Plymouth, Taranaki, which is <span aria-hidden="true" class="gap medium"></span> of NZ. I’m like oh ok my <span aria-hidden="true" class="gap medium"></span> good. <span aria-hidden="true" class="gap short"></span> So we go up to the <span aria-hidden="true" class="gap medium"></span> like I could pay for them and I’m like <span aria-hidden="true" class="gap medium"></span> time.</p>
+<p>I forgot to mention that we split the <span aria-hidden="true" class="gap long"></span> don’t always have money to spend. I’m like oh no it’s all good, but thanks for offering. We then go back <span aria-hidden="true" class="gap short"></span> place.</p>
+<p>The drinks come, we finish the <span aria-hidden="true" class="gap short"></span> and we keep talking about god knows <span aria-hidden="true" class="gap long"></span> spicy parts (lol). <span aria-hidden="true" class="gap medium"></span> Like <span aria-hidden="true" class="gap medium"></span> guacamole and I’m like yeah, and he’s like my friend taught me how to do it when <span aria-hidden="true" class="gap short"></span> Europe. He’s like I could make you some, <span aria-hidden="true" class="gap long"></span> fr.</p>
+<p>I was <span aria-hidden="true" class="gap medium"></span> kindness he was throwing out to me. I was a <span aria-hidden="true" class="gap short"></span> he managed to grab in his net. He wasn’t evil or looked like <span aria-hidden="true" class="gap long"></span> doing and how to get <span aria-hidden="true" class="gap short"></span> highkey.</p>
+<p>After he finishes the fries he asks if I want dessert and if I wanted to try something from <span aria-hidden="true" class="gap short"></span> ah <span aria-hidden="true" class="gap long"></span> don’t mind being here while you eat whatever you get. <span aria-hidden="true" class="gap medium"></span> He’s then <span aria-hidden="true" class="gap medium"></span> if we tried dessert somewhere else?</p>
+<p>I don’t <span aria-hidden="true" class="gap short"></span> wait again for an order. I’m <span aria-hidden="true" class="gap long"></span> else. He’s like we could get something from countdown and <span aria-hidden="true" class="gap medium"></span> bitch <span aria-hidden="true" class="gap short"></span> cool sounds like a plan, and then we head out.</p>
+<p>As we walk <span aria-hidden="true" class="gap long"></span> Idk if he brought up <span aria-hidden="true" class="gap short"></span> thing or if I asked him but whatever. We <span aria-hidden="true" class="gap short"></span> our shoulders as we walked to countdown and I felt aroused and <span aria-hidden="true" class="gap short"></span> a connection. I would <span aria-hidden="true" class="gap short"></span> glances to my right, the side he <span aria-hidden="true" class="gap short"></span> on, and see his handsome face.</p>
+<p>And I thought damn this guy is interested in me, which <span aria-hidden="true" class="gap short"></span> feel <span aria-hidden="true" class="gap medium"></span> bruh. <span aria-hidden="true" class="gap short"></span></p>
+<p>We <span aria-hidden="true" class="gap short"></span> it to countdown and we walk towards the milk <span aria-hidden="true" class="gap long"></span> else so <span aria-hidden="true" class="gap medium"></span> which idk what it was now, I think milk. As we’re walking towards the ice creams he says something <span aria-hidden="true" class="gap long"></span> omg I was so embarrassed. <span aria-hidden="true" class="gap medium"></span></p>
+<p>I'm not even joking. I kinda make a big deal of it <span aria-hidden="true" class="gap long"></span> the <span aria-hidden="true" class="gap short"></span> and he asks what type <span aria-hidden="true" class="gap medium"></span> like. I say I like <span aria-hidden="true" class="gap medium"></span> and he says he likes it too so <span aria-hidden="true" class="gap short"></span> get it.</p>
+<p>He pays for <span aria-hidden="true" class="gap short"></span> stuff and we <span aria-hidden="true" class="gap medium"></span> place.</p>
+<p><span aria-hidden="true" class="gap long"></span> I’m like it’s probably spain Spanish so the words might <span aria-hidden="true" class="gap medium"></span> He tells me to say something and <span aria-hidden="true" class="gap medium"></span> does sound <span aria-hidden="true" class="gap medium"></span> it sound like this and I proceed to do my best <span aria-hidden="true" class="gap medium"></span> like people <span aria-hidden="true" class="gap short"></span> elite.</p>
+<p>He’s <span aria-hidden="true" class="gap long"></span> it to his place he tells me that where he’s living are landmarks in Wellington. Like the flat he’s renting was part of the earliest <span aria-hidden="true" class="gap medium"></span> I said was really cool.</p>
+<p>Elliot’s place is on the top side of the building <span aria-hidden="true" class="gap long"></span> I get inside that I don’t know how to describe. <span aria-hidden="true" class="gap short"></span> probably my awe with the building’s history. <span aria-hidden="true" class="gap short"></span> into <span aria-hidden="true" class="gap short"></span> I gaze at the paintings that are up and he <span aria-hidden="true" class="gap medium"></span> them.</p>
+<p><span aria-hidden="true" class="gap medium"></span> Cool. I keep <span aria-hidden="true" class="gap short"></span> see some herb plants <span aria-hidden="true" class="gap short"></span> something <span aria-hidden="true" class="gap short"></span> them. He offers me some water <span aria-hidden="true" class="gap medium"></span> room.</p>
+<p>We have to pass the living <span aria-hidden="true" class="gap long"></span> flatmate, is <span aria-hidden="true" class="gap long"></span> start coughing cuz the <span aria-hidden="true" class="gap short"></span> was drinking went down the wrong pipe. I calm down and we go inside his room where he tells me <span aria-hidden="true" class="gap short"></span> comfortable. <span aria-hidden="true" class="gap long"></span></p>
+<p>He asks if I wanna put on shorts and <span aria-hidden="true" class="gap short"></span> I’m good. He puts on shorts and gets on the <span aria-hidden="true" class="gap long"></span> do the same. We are sat side by side and <span aria-hidden="true" class="gap medium"></span> I don’t remember the name <span aria-hidden="true" class="gap medium"></span> do you <span aria-hidden="true" class="gap short"></span> I’m like yeah.</p>
+<p>I’m the little spoon and he’s <span aria-hidden="true" class="gap short"></span> big spoon. I <span aria-hidden="true" class="gap medium"></span> ass. <span aria-hidden="true" class="gap short"></span> Elliot <span aria-hidden="true" class="gap medium"></span> above my shirt <span aria-hidden="true" class="gap short"></span> he goes under my shirt.</p>
+<p>Like I liked it but for me I’ve learned since that I want an emotional connection with <span aria-hidden="true" class="gap medium"></span> stuff, so him doing <span aria-hidden="true" class="gap long"></span> how to describe it. He’s like you’re shy and I’m like yeah <span aria-hidden="true" class="gap long"></span> know what you’re gonna ask me, go ahead. He asks “Are you a virgin?” I say yeah, <span aria-hidden="true" class="gap short"></span> obvious?</p>
+<p>He responds with <span aria-hidden="true" class="gap short"></span> it’s all <span aria-hidden="true" class="gap short"></span> cute.”</p>
+<p>We keep watching the <span aria-hidden="true" class="gap medium"></span> stomach, <span aria-hidden="true" class="gap medium"></span> wanna take off my shirt and jeans, which I do. <span aria-hidden="true" class="gap long"></span> I start stroking <span aria-hidden="true" class="gap medium"></span> as I wonder what I wanna do with Elliot.</p>
+<p>I’m still gonna write <span aria-hidden="true" class="gap short"></span> this next realization but I wanted to get <span aria-hidden="true" class="gap medium"></span> of the main reasons why I still think back to my brief yet long feeling time with <span aria-hidden="true" class="gap medium"></span> to be <span aria-hidden="true" class="gap medium"></span> was when <span aria-hidden="true" class="gap medium"></span> personal stuff. I like to be <span aria-hidden="true" class="gap medium"></span> just don’t tell anyone (making me think we were more than just a plain old hookup). It might also <span aria-hidden="true" class="gap long"></span> close to each other or whatever the science is behind that. I’m <span aria-hidden="true" class="gap long"></span> that.</p>
+<p>I got a flavor of what <span aria-hidden="true" class="gap medium"></span> it seems like it’s all <span aria-hidden="true" class="gap medium"></span> about. <span aria-hidden="true" class="gap medium"></span> It fucking hurts but that’s <span aria-hidden="true" class="gap long"></span> would’ve ghosted me if I didn’t say <span aria-hidden="true" class="gap medium"></span> busy until I <span aria-hidden="true" class="gap short"></span> asking what he was up to that <span aria-hidden="true" class="gap medium"></span> a similar way to <span aria-hidden="true" class="gap short"></span> in the text message why he didn’t say anything before I say something.</p>
+<p>I guess that just shows the type of person <span aria-hidden="true" class="gap long"></span> I said I didn’t wanna do anything anymore. His thought process is gonna be a mystery because <span aria-hidden="true" class="gap medium"></span> there was no <span aria-hidden="true" class="gap medium"></span> to talk it <span aria-hidden="true" class="gap medium"></span> fully explain myself in the first text I sent. He just restated that he had <span aria-hidden="true" class="gap short"></span> we shouldn’t be intimate again.</p>
+<p><span aria-hidden="true" class="gap long"></span></p>
+<p>I’ve learned <span aria-hidden="true" class="gap medium"></span> want a deeper connection than just sex <span aria-hidden="true" class="gap short"></span> maybe some cuddles and stuff. I <span aria-hidden="true" class="gap short"></span> thing. <span aria-hidden="true" class="gap long"></span> I’m not mad I tried <span aria-hidden="true" class="gap medium"></span> know <span aria-hidden="true" class="gap short"></span> what I want <span aria-hidden="true" class="gap medium"></span> type of person that I’d want to be with.</p>
+<p>Some things that <span aria-hidden="true" class="gap short"></span> in someone is that they are understanding, <span aria-hidden="true" class="gap long"></span> but rn it’s those three that are the main ones.</p>
+<p>Random stuff: I find it weird that I went for a walk on <span aria-hidden="true" class="gap medium"></span> knowing it the week before and vaguely remember seeing the flats he lives in and wanting to take a picture because I thought they looked interesting. I didn’t take the picture because I thought people were gonna think <span aria-hidden="true" class="gap long"></span> that that was <span aria-hidden="true" class="gap long"></span> head when <span aria-hidden="true" class="gap short"></span> place.</p>
+<p>Like wtf that was <span aria-hidden="true" class="gap short"></span> It’s just so <span aria-hidden="true" class="gap short"></span> I wasn’t even gonna go out for a walk <span aria-hidden="true" class="gap medium"></span> took. <span aria-hidden="true" class="gap medium"></span> Oof it’s <span aria-hidden="true" class="gap short"></span> think about.</p>
+<p>I walked past the place that would fuck <span aria-hidden="true" class="gap short"></span> up without <span aria-hidden="true" class="gap medium"></span> strange.</p>
+<div class="diary-transition">a month later</div>
+<p class="entry-subtitle">Recap on what happened June 10–11, 2023</p>
+<p>I met a guy at the club last weekend. I wasn’t expecting anything <span aria-hidden="true" class="gap long"></span> Clara. <span aria-hidden="true" class="gap long"></span> Afterward, <span aria-hidden="true" class="gap long"></span> Ivy, a gay bar, because I had tried going before I had met up with <span aria-hidden="true" class="gap short"></span> there was a private event going on <span aria-hidden="true" class="gap medium"></span> I had <span aria-hidden="true" class="gap medium"></span> 11:30pm.</p>
+<p>Clara agrees and we go to Ivy, I even joke with her that <span aria-hidden="true" class="gap short"></span> making out with someone that night, not <span aria-hidden="true" class="gap long"></span> to Ivy and we start dancing, feeling the music. We’re in the back of the dance floor for a bit and I’m taking <span aria-hidden="true" class="gap long"></span> pulls <span aria-hidden="true" class="gap medium"></span> the dance floor, where we continue dancing and just vibing <span aria-hidden="true" class="gap short"></span> music.</p>
+<p>I honestly don’t remember how long we’re dancing there <span aria-hidden="true" class="gap medium"></span> single. <span aria-hidden="true" class="gap short"></span> I <span aria-hidden="true" class="gap short"></span> besides say hi, and I turn to my friend <span aria-hidden="true" class="gap medium"></span> meaning that if he really <span aria-hidden="true" class="gap short"></span> was gonna <span aria-hidden="true" class="gap short"></span> more <span aria-hidden="true" class="gap long"></span> the guy who thought I was cute gets closer and closer until we are facing each other.</p>
+<p>He asks for my name and I <span aria-hidden="true" class="gap long"></span> me that I’m <span aria-hidden="true" class="gap short"></span> looking and all that. He asks me if I want a drink and I say no, I’m good but thanks.</p>
+<p><span aria-hidden="true" class="gap medium"></span> I somewhat like that but I was <span aria-hidden="true" class="gap short"></span> go easy for someone, or that’s what I thought. I push his hand away and he’s like <span aria-hidden="true" class="gap short"></span> so <span aria-hidden="true" class="gap long"></span> dance.</p>
+<p>We dance for <span aria-hidden="true" class="gap medium"></span> and he’s like can I kiss you and I’m like ok <span aria-hidden="true" class="gap short"></span> we start kissing on the dance floor. Julian then tells <span aria-hidden="true" class="gap long"></span> either me or him ask for my or his number and we exchange numbers. <span aria-hidden="true" class="gap long"></span></p>
+<p>I’m then like do you have Snapchat? <span aria-hidden="true" class="gap long"></span> type in his username, <span aria-hidden="true" class="gap long"></span> due to Ivy being <span aria-hidden="true" class="gap medium"></span> to go to the waterfront to talk to him in a more quiet environment and he agrees. I get Clara an Uber and Julian gets his <span aria-hidden="true" class="gap medium"></span> well.</p>
+<p>We start walking <span aria-hidden="true" class="gap medium"></span> Julian says he’s hungry and I’m like what are you feeling? I’m <span aria-hidden="true" class="gap short"></span> And he’s like yeah. Mind you <span aria-hidden="true" class="gap long"></span> night.</p>
+<p>I’m trying to take him to the waterfront to sober him up so he’s the most aware of <span aria-hidden="true" class="gap long"></span> a line and he doesn’t want to wait. He then tells me <span aria-hidden="true" class="gap medium"></span> his place and either order McDonald’s or <span aria-hidden="true" class="gap long"></span> it from there.</p>
+<p>I also wanted to take him to the waterfront because I wanted <span aria-hidden="true" class="gap short"></span> to know him <span aria-hidden="true" class="gap long"></span> decisions. <span aria-hidden="true" class="gap medium"></span> We talk about stuff that I can’t really <span aria-hidden="true" class="gap short"></span> as we’re walking <span aria-hidden="true" class="gap long"></span> teach him Spanish and me asking him to <span aria-hidden="true" class="gap short"></span> Samoan.</p>
+<p>We talk about our favorite colors <span aria-hidden="true" class="gap medium"></span> it to the waterfront and I take us to <span aria-hidden="true" class="gap long"></span> before we <span aria-hidden="true" class="gap short"></span> to the area where we eventually sit down he tells me that he wants to kiss me <span aria-hidden="true" class="gap long"></span> almost at the sitting area.</p>
+<p><span aria-hidden="true" class="gap long"></span> He tells me about his life <span aria-hidden="true" class="gap short"></span> how he grew up there. He tells <span aria-hidden="true" class="gap long"></span> when he was a kid. A lot of <span aria-hidden="true" class="gap short"></span> honestly.</p>
+<p>He’s like can I kiss you now? I tell him that I haven’t kissed anyone <span aria-hidden="true" class="gap long"></span> saying no to kissing <span aria-hidden="true" class="gap short"></span> me he can teach me, which he does and <span aria-hidden="true" class="gap medium"></span> bit. <span aria-hidden="true" class="gap short"></span></p>
+<p>He notices that I’m cold and <span aria-hidden="true" class="gap long"></span> has his shirt on. He’s <span aria-hidden="true" class="gap medium"></span> and I’m thankful for his flannel. During one <span aria-hidden="true" class="gap long"></span> He asks me why and I tell him that I feel like someone might hurt us.</p>
+<p>He tells me that if someone were to come up to us and want <span aria-hidden="true" class="gap medium"></span> he would protect <span aria-hidden="true" class="gap medium"></span> to <span aria-hidden="true" class="gap medium"></span> good about that. <span aria-hidden="true" class="gap medium"></span> Some ducks come out of nowhere <span aria-hidden="true" class="gap medium"></span> the pebbles where we’re sitting <span aria-hidden="true" class="gap medium"></span> them.</p>
+<p>I tell him to stop <span aria-hidden="true" class="gap medium"></span> he doesn’t hear me cuz he keeps throwing them, and he’s like “have you ever seen a duck <span aria-hidden="true" class="gap long"></span> it’s weird. While he tells me this, which is something I clearly remember from the night, I see a shooting star, <span aria-hidden="true" class="gap medium"></span> dummy that I am, am to myself <span aria-hidden="true" class="gap long"></span> asks if I <span aria-hidden="true" class="gap medium"></span> to his place and I tell <span aria-hidden="true" class="gap long"></span> as in having sex.</p>
+<p>He says that we don’t have to do <span aria-hidden="true" class="gap medium"></span> at his place. <span aria-hidden="true" class="gap long"></span> We do <span aria-hidden="true" class="gap medium"></span> yeah I’m down. He tells me that he can make me a grilled <span aria-hidden="true" class="gap medium"></span> place.</p>
+<p>I agree to his offer <span aria-hidden="true" class="gap long"></span> and the grilled cheese sounded tempting. He says he can order us an Uber, which he does but the Uber cancels, <span aria-hidden="true" class="gap long"></span> so it <span aria-hidden="true" class="gap medium"></span> tells me that he really needs <span aria-hidden="true" class="gap medium"></span> ends up going pee in a nearby tree.</p>
+<p><span aria-hidden="true" class="gap short"></span> He finishes and we start walking towards his place, holding hands. On our way <span aria-hidden="true" class="gap long"></span> we could ride one <span aria-hidden="true" class="gap medium"></span> we see don’t end up working <span aria-hidden="true" class="gap medium"></span> frustrated.</p>
+<p>We then continue <span aria-hidden="true" class="gap medium"></span> make it to his <span aria-hidden="true" class="gap medium"></span> toilet, where I go pee but mostly to text my flatmate that I probably wasn’t going to be going home that night. I also <span aria-hidden="true" class="gap medium"></span> what I <span aria-hidden="true" class="gap medium"></span> at. <span aria-hidden="true" class="gap medium"></span></p>
+<p>He tells me that <span aria-hidden="true" class="gap medium"></span> cheese and he leads me upstairs where the kitchen is. He gives me water and shows me the living room area, telling me that a lot <span aria-hidden="true" class="gap long"></span> other people, his flatmates. He shows me where he works from <span aria-hidden="true" class="gap medium"></span> tells me that that is <span aria-hidden="true" class="gap medium"></span> room and then we go back to the kitchen, where he pulls out <span aria-hidden="true" class="gap long"></span> remember again, drunkenly, and <span aria-hidden="true" class="gap long"></span> cheese.</p>
+<p>I’m laughing playfully <span aria-hidden="true" class="gap medium"></span> somewhat playfully <span aria-hidden="true" class="gap medium"></span> for the grilled cheese because he never makes food for anyone. <span aria-hidden="true" class="gap long"></span> He then asks, “is your <span aria-hidden="true" class="gap medium"></span> like no.</p>
+<p>And he’s like well I <span aria-hidden="true" class="gap short"></span> for you. I’m <span aria-hidden="true" class="gap long"></span> and he’s like let’s go to my room. For some reason <span aria-hidden="true" class="gap medium"></span> like is it this way?</p>
+<p>And then he kind <span aria-hidden="true" class="gap short"></span> that I was <span aria-hidden="true" class="gap short"></span> way. <span aria-hidden="true" class="gap short"></span> I am not facing him when I roll my <span aria-hidden="true" class="gap short"></span> him “well this is my <span aria-hidden="true" class="gap long"></span> his room downstairs and he tells me <span aria-hidden="true" class="gap medium"></span> shoes in his room, so he takes his <span aria-hidden="true" class="gap medium"></span> to <span aria-hidden="true" class="gap short"></span> off.</p>
+<p>Julian also <span aria-hidden="true" class="gap medium"></span> he had worn all day on his bed, and especially pants he has worn <span aria-hidden="true" class="gap long"></span> and <span aria-hidden="true" class="gap medium"></span> to take off my pants. I make up an excuse that I’m <span aria-hidden="true" class="gap medium"></span> he tells me that he isn’t as well. He offers me shorts which I <span aria-hidden="true" class="gap short"></span> on.</p>
+<p><span aria-hidden="true" class="gap medium"></span> He tells me to try it and I’m like ooo I’m good. He then says “you’re going to <span aria-hidden="true" class="gap medium"></span> it for you?” <span aria-hidden="true" class="gap medium"></span> that the grilled <span aria-hidden="true" class="gap short"></span> burnt <span aria-hidden="true" class="gap medium"></span> bad.</p>
+<p>I’m like ok I’ll try it. He rips off a piece from the sandwich and tells me that we could try <span aria-hidden="true" class="gap medium"></span> the piece from <span aria-hidden="true" class="gap long"></span> the tramp style. <span aria-hidden="true" class="gap long"></span></p>
+<p>We do that and I chew on it for a while because it’s burnt but also because I was dehydrated from <span aria-hidden="true" class="gap long"></span> about stuff while he munches on the grilled <span aria-hidden="true" class="gap medium"></span> and tells me that I <span aria-hidden="true" class="gap short"></span> more.</p>
+<p>He eats the rest. We talk some <span aria-hidden="true" class="gap medium"></span> more. <span aria-hidden="true" class="gap short"></span> We fall asleep cuddling naked.</p>
+<p>I wake up several <span aria-hidden="true" class="gap short"></span> morning because I’m in an uncomfortable position. Julian calls me babe in his <span aria-hidden="true" class="gap long"></span> over so he could reposition himself. I fall back asleep. I wake up before him and <span aria-hidden="true" class="gap medium"></span> of us in <span aria-hidden="true" class="gap long"></span> friend.</p>
+<p>He wakes up <span aria-hidden="true" class="gap medium"></span> I was just watching him sleep. <span aria-hidden="true" class="gap medium"></span> He smiles. We talk about stuff and then we start making out again and then he gets in <span aria-hidden="true" class="gap short"></span> he were to fuck <span aria-hidden="true" class="gap long"></span> he would fuck me.</p>
+<p>I tell <span aria-hidden="true" class="gap short"></span> I do <span aria-hidden="true" class="gap medium"></span> the way, meaning having intercourse. He seems to be fine with that. He then gives me head. He goes <span aria-hidden="true" class="gap long"></span> bit.</p>
+<p><span aria-hidden="true" class="gap long"></span> He tells <span aria-hidden="true" class="gap short"></span> it feels really good for him and asks if it does for me. I tell him that it <span aria-hidden="true" class="gap medium"></span> to me. <span aria-hidden="true" class="gap medium"></span> heavily.</p>
+<p>We do this for a while and he tells me that he wants me <span aria-hidden="true" class="gap long"></span> this without none of us having cum. <span aria-hidden="true" class="gap short"></span> me he <span aria-hidden="true" class="gap short"></span> go pee and he gets <span aria-hidden="true" class="gap short"></span> that it <span aria-hidden="true" class="gap short"></span> spinning. <span aria-hidden="true" class="gap short"></span></p>
+<p>He eventually makes <span aria-hidden="true" class="gap long"></span> him that we could continue doing what we had been doing before he went to the toilet. He gets back on the bed and I start thrusting again. We do <span aria-hidden="true" class="gap long"></span> other.</p>
+<p>We lay side by side. He asks if <span aria-hidden="true" class="gap short"></span> and <span aria-hidden="true" class="gap medium"></span> good. <span aria-hidden="true" class="gap medium"></span> I <span aria-hidden="true" class="gap short"></span> my friends that I’m ok.</p>
+<p>I go back to Julian’s room and on his bed. <span aria-hidden="true" class="gap medium"></span> leaving and he says, 5 more minutes. <span aria-hidden="true" class="gap medium"></span> we go <span aria-hidden="true" class="gap short"></span> to cuddling. We talk some <span aria-hidden="true" class="gap medium"></span> again.</p>
+<p>I tell him <span aria-hidden="true" class="gap short"></span> orders McDonald’s. <span aria-hidden="true" class="gap long"></span> He feeds me a couple fries and <span aria-hidden="true" class="gap long"></span> stuff to <span aria-hidden="true" class="gap medium"></span> changing I notice how large my neck hikees are.</p>
+<p>I ask for a scarf and he tells me that the only one he <span aria-hidden="true" class="gap medium"></span> wears to work. <span aria-hidden="true" class="gap long"></span> and I tell him bye. I give <span aria-hidden="true" class="gap medium"></span> we stay there for a while.</p>
+<p><span aria-hidden="true" class="gap short"></span> I then lay <span aria-hidden="true" class="gap short"></span> chest and we talk some more. I finally leave <span aria-hidden="true" class="gap short"></span> and I head home with my McDonald’s in my hand. The following days <span aria-hidden="true" class="gap long"></span> maybe.</p>
+<p>After a few days he starts responding less frequently, until the fourth day he responds until the end of the day. I responded to <span aria-hidden="true" class="gap long"></span> situationship…</p>
+</div>
+<p class="notes-date"><time datetime="2023-06-17T17:09">June 17, 2023 5:09 PM</time></p>
+</article>
+<article aria-labelledby="tab-green" class="notes-entry" hidden="" id="entry-green" role="tabpanel" tabindex="0">
+<ul class="notes-list">
+<li>Troye Sivan</li>
+<li>Dinosaurs</li>
+<li>Giraffes</li>
+<li>Bruh</li>
+<li>Home</li>
+<li>Fly</li>
+<li>Warm</li>
+<li>Sleepy af</li>
+<li>Bruh</li>
+<li>Strut</li>
+<li>Talk</li>
+<li>Tongue</li>
+<li>Lately</li>
+<li>Call</li>
+<li>Close eyes</li>
+<li>Lately</li>
+<li>Fruits</li>
+<li>Police</li>
+<li>Dogs</li>
+<li style="margin-bottom: -8px;">Frenchies</li>
+<li>Adan</li>
+<li>Arroz con leche</li>
+</ul>
+<p class="notes-date"><time datetime="2021-12-18T22:41">December 18, 2021 10:41 PM</time></p>
+</article>
+<article aria-labelledby="tab-season" class="notes-entry" hidden="" id="entry-season" role="tabpanel" tabindex="0">
+<div class="notes-prose">
+<p>The pain that’s been coming season</p>
+<p>after season has yet to go extinct;</p>
+<p>nobody knows its origin, its home,</p>
+<p>its resting place.</p>
+<p>Once it arrives, it makes you motionless,</p>
+<p>absentminded, ungrounded.</p>
+<p>It first wraps its coils around your soul;</p>
+<p>these suck the energy, the life out,</p>
+<p>beginning the stages, extinguishing.</p>
+<p>As you stir within your empty thoughts,</p>
+<p>hoping to somehow grab onto a thread,</p>
+<p>you’re surprised to discover</p>
+<p>there is nothing</p>
+<p>not</p>
+<p>one</p>
+<p>single</p>
+<p>string that can help maneuver,</p>
+<p>steer, or guide.</p>
+<p>Once it departs, it makes you a wire</p>
+<p>running with electricity,</p>
+<p>bold, alert.</p>
+<p>Where did it go?</p>
+<p>When will it return?</p>
+<p>Why was it here?</p>
+<p>The electrical current circulating</p>
+<p>through your body flows</p>
+<p>into the soft carpet;</p>
+<p>giving energy to the lifeless room,</p>
+<p>a brief candle, a promising spark</p>
+</div>
+<p class="notes-date"><time datetime="2018-11-15T22:21">November 15, 2018 10:21 PM</time></p>
+</article>
+</main>
+</div>
+<script>
+    (() => {
+      const tabs = Array.from(document.querySelectorAll('.notes-tab'));
+      const panels = Array.from(document.querySelectorAll('.notes-entry'));
+      function activate(tab, focus = false) {
+        tabs.forEach(t => {
+          const active = t === tab;
+          t.setAttribute('aria-selected', String(active));
+          t.tabIndex = active ? 0 : -1;
+        });
+        panels.forEach(panel => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
+        if (focus) tab.focus();
+      }
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => activate(tab));
+        tab.addEventListener('keydown', event => {
+          let next;
+          if (event.key === 'ArrowRight') next = (i + 1) % tabs.length;
+          else if (event.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+          else if (event.key === 'Home') next = 0;
+          else if (event.key === 'End') next = tabs.length - 1;
+          else return;
+          event.preventDefault(); activate(tabs[next], true);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
