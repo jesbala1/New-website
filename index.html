@@ -15,7 +15,7 @@
 <style id="nav-unified">.menu .rhythms-nav{display:flex;flex-direction:column;align-items:flex-start;gap:13px}.menu .rhythms-nav a{display:block}.menu .rhythms-nav:hover a,.menu .rhythms-nav:focus-within a{color:#198a42}@media(max-width:650px){.menu .rhythms-nav{gap:11px}}</style><style id="notes-transition-style">
 .notes-code-ghost{position:fixed;z-index:9999;margin:0;pointer-events:none;white-space:pre;line-height:1.2;transform-origin:left center;will-change:opacity,transform;}
 body.notes-exiting .sidebar{visibility:hidden}
-body.notes-exiting .sun-home{transition:opacity .8s ease,filter .8s ease;opacity:0;filter:blur(8px)}
+body.notes-exiting .sun-home{transition:opacity 1.5s ease-in-out,filter 1.5s ease-in-out;opacity:0;filter:blur(3px)}
 body.notes-exiting{pointer-events:none}
 @media(prefers-reduced-motion:reduce){body.notes-exiting .sun-home{transition:none}}
 </style></head>
@@ -61,23 +61,35 @@ body.notes-exiting{pointer-events:none}
   });
   document.body.classList.add('notes-exiting');
   const started=performance.now();
+  const duration=1650;
+  let lastStep=-1;
+  function ease(t){return t*t*(3-2*t)}
   function animate(now){
    const elapsed=now-started;
+   const step=Math.floor(elapsed/115);
    ghosts.forEach(({ghost,original,index})=>{
-    const start=index*27;
-    const progress=Math.max(0,Math.min(1,(elapsed-start)/620));
-    if(progress<=0)return;
-    const scrambled=[...original].map(ch=>{
-     if(/\s/.test(ch))return ch;
-     if(Math.random()<progress*.85)return alphabet[Math.floor(Math.random()*alphabet.length)];
-     return ch;
-    }).join('');
-    ghost.textContent=scrambled;
-    ghost.style.opacity=String(Math.max(0,1-Math.pow(progress,1.65)));
-    ghost.style.transform=`translate(${(Math.random()-.5)*progress*12}px,${-progress*8+(Math.random()-.5)*progress*7}px)`;
-    ghost.style.filter=progress>.5&&Math.random()>.65?'blur(.7px)':'none';
+    // A gentle stagger: the text softly turns into code, then dissolves.
+    const delay=index*34;
+    const progress=Math.max(0,Math.min(1,(elapsed-delay)/1300));
+    const morph=ease(Math.min(1,progress/.72));
+    if(step!==lastStep){
+     ghost.textContent=[...original].map((ch,i)=>{
+      if(/\s/.test(ch))return ch;
+      // Stable per-character thresholds avoid rapid, chaotic flickering.
+      const threshold=((i*37+index*19)%101)/101;
+      if(morph>threshold*.87+.08){
+       const symbol=(i*7+index*11+Math.floor(step/2))%alphabet.length;
+       return alphabet[symbol];
+      }
+      return ch;
+     }).join('');
+    }
+    const fade=ease(Math.max(0,(progress-.38)/.62));
+    ghost.style.opacity=String(1-fade);
+    ghost.style.transform=`translate3d(0,${(-4*ease(progress)).toFixed(2)}px,0)`;
    });
-   if(elapsed<960){requestAnimationFrame(animate)}else{window.location.assign(destination)}
+   lastStep=step;
+   if(elapsed<duration){requestAnimationFrame(animate)}else{window.location.assign(destination)}
   }
   requestAnimationFrame(animate);
  });
