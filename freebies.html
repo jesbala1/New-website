@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Freebies — creative downloads and artist resources from JESBALA">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Freebies — creative downloads and artist resources from JESBALA" name="description"/>
 <title>Freebies — JESBALA</title>
-<link rel="stylesheet" href="sidebar-shared.css?v=20261112-aligned">
+<link href="sidebar-shared.css?v=20261112-aligned" rel="stylesheet"/>
 <style>
 :root{--green:#198a42;--ink:#141414}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#dceccf;color:var(--ink);font:15px Arial,Helvetica,sans-serif}
 .layout{max-width:1450px;margin:auto;display:grid;grid-template-columns:290px minmax(0,1fr);gap:50px;padding:30px 44px 65px}.sidebar{position:sticky;top:30px;height:calc(100vh - 60px);display:flex;flex-direction:column}.brand{font-size:16px;text-decoration:none;color:inherit;letter-spacing:-.5px}.menu{margin-top:84px;display:flex;flex-direction:column;align-items:flex-start;gap:13px}.menu a{color:inherit;text-decoration:none;line-height:1.2}.menu a:hover,.menu a.active{color:var(--green)}.menu a.indent{padding-left:14px;margin-top:-10px}.menu .break{height:17px}.foot{margin-top:105px;color:#666;font-size:11px;line-height:1.45}.main{min-width:0;padding-top:74px}
@@ -25,15 +26,15 @@
 #panel-creative .download figcaption {margin-top:7px;}
 @media(max-width:650px){#panel-creative{padding:0;}}
 </style>
-</head>
-<body><div class="layout"><aside class="sidebar"><a class="brand" href="/">JESBALA</a><nav class="menu" aria-label="Main navigation"><a href="feel-me.html">Feel Me</a><a href="hear-me.html">Hear Me</a><a href="rhythms.html">Rhythms that Reverberate</a><a class="indent" href="rhythms.html">and Tend to the Flame</a><a href="attached.html">a  t t  ached</a><a href="whisky.html">Whisky</a><a href="notes-app.html">Notes App</a><span class="break"></span><a class="active" aria-current="page" href="freebies.html">Freebies</a><a href="about.html">About</a></nav><div class="foot">Jesús Balandrano Ramírez<br>Los Angeles, California</div></aside>
+<style id="nav-unified">.menu .rhythms-nav{display:flex;flex-direction:column;align-items:flex-start;gap:13px}.menu .rhythms-nav a{display:block}.menu .rhythms-nav:hover a,.menu .rhythms-nav:focus-within a{color:#198a42}@media(max-width:650px){.menu .rhythms-nav{gap:11px}}</style></head>
+<body><div class="layout"><aside class="sidebar"><a class="brand" href="/">JESBALA</a><nav aria-label="Main navigation" class="menu"><a href="hear-me.html">Hear Me</a><span class="rhythms-nav"><a href="rhythms.html">Rhythms that Reverberate</a><a class="indent" href="rhythms.html">and Tend to the Flame</a></span><a href="attached.html">a  t t  ached</a><a href="stay-for-a-minute.html">Stay for a Minute</a><a href="whisky.html">Whisky</a><a href="notes-app.html">Notes App</a><span class="break"></span><a aria-current="page" class="active" href="freebies.html">Freebies</a><a href="about.html">About</a></nav><div class="foot">Jesús Balandrano Ramírez<br/>Los Angeles, California</div></aside>
 <main class="main"><h1 class="page-title">Freebies</h1>
-<div class="subnav" role="tablist" aria-label="Freebies categories"><button id="tab-creative" type="button" role="tab" aria-controls="panel-creative" aria-selected="true" tabindex="0">Creative Downloads</button><span class="slash" aria-hidden="true">/</span><button id="tab-resources" type="button" role="tab" aria-controls="panel-resources" aria-selected="false" tabindex="-1">Artist Resources</button></div>
-<section class="panel" id="panel-creative" role="tabpanel" aria-labelledby="tab-creative"><h2 class="section-heading">Coloring Pages</h2>
-<div class="gallery" id="coloring-gallery" aria-label="Downloadable coloring pages"></div><div class="empty" id="coloring-empty"><p>Coloring pages are available to download.</p><p>Click an image to preview it, or select [Download] to save the printable PDF.</p></div></section>
-<section class="panel" id="panel-resources" role="tabpanel" aria-labelledby="tab-resources" hidden><p class="section-intro">Tools, references, and other useful things for making and thinking about art.</p><div class="resource-list" id="resource-list"></div><div class="empty" id="resources-empty"><p>Artist resources are coming soon.</p><p>This space will grow as new materials are added.</p></div></section>
+<div aria-label="Freebies categories" class="subnav" role="tablist"><button aria-controls="panel-creative" aria-selected="true" id="tab-creative" role="tab" tabindex="0" type="button">Creative Downloads</button><span aria-hidden="true" class="slash">/</span><button aria-controls="panel-resources" aria-selected="false" id="tab-resources" role="tab" tabindex="-1" type="button">Artist Resources</button></div>
+<section aria-labelledby="tab-creative" class="panel" id="panel-creative" role="tabpanel"><h2 class="section-heading">Coloring Pages</h2>
+<div aria-label="Downloadable coloring pages" class="gallery" id="coloring-gallery"></div><div class="empty" id="coloring-empty"><p>Coloring pages are available to download.</p><p>Click an image to preview it, or select [Download] to save the printable PDF.</p></div></section>
+<section aria-labelledby="tab-resources" class="panel" hidden="" id="panel-resources" role="tabpanel"><p class="section-intro">Tools, references, and other useful things for making and thinking about art.</p><div class="resource-list" id="resource-list"></div><div class="empty" id="resources-empty"><p>Artist resources are coming soon.</p><p>This space will grow as new materials are added.</p></div></section>
 </main></div>
-<div class="lightbox" id="freebies-lightbox" role="dialog" aria-modal="true" aria-label="Expanded coloring page" aria-hidden="true"><div class="lightbox-frame"><img class="lightbox-image" alt=""><button class="lightbox-close" type="button" aria-label="Close expanded artwork">&times;</button></div></div>
+<div aria-hidden="true" aria-label="Expanded coloring page" aria-modal="true" class="lightbox" id="freebies-lightbox" role="dialog"><div class="lightbox-frame"><img alt="" class="lightbox-image"/><button aria-label="Close expanded artwork" class="lightbox-close" type="button">×</button></div></div>
 <script>
 (()=>{
  const tabs=[...document.querySelectorAll('[role="tab"]')];
