@@ -109,6 +109,31 @@ body:has(#entry-symbols:not([hidden])) .notes-main { max-width: 850px; width: au
 #m64-gold-prose p {color:transparent!important;}
 #m64-gold-prose .memory-gap {color:#b68a32!important;opacity:.68;background:none!important;white-space:normal!important;}
 #m64-gold-prose .memory-gap::after {content:none!important;}
+</style><style>
+/* Notes App: use more of the available screen while keeping each piece readable. */
+.notes-main{width:calc(100% - 72px);max-width:1120px;margin:65px auto 100px}
+.notes-tabs{margin-bottom:38px}
+.notes-entry{max-width:790px;width:100%}
+.notes-list,.redacted-entry{max-width:790px}
+.notes-prose{font-size:16px;line-height:1.85}
+.notes-list{font-size:16px;line-height:1.85}
+.redacted-entry p{font-size:16px;line-height:1.9}
+#entry-appcycle{max-width:1000px}
+#entry-appcycle .cross-poem{font-size:clamp(14px,1.22vw,17px)}
+#entry-recap{width:min(96vw,1800px)}
+.recap-scattered{height:min(118vh,1200px);min-height:780px}
+/* Tangerine already uses a full-viewport canvas; leave its art geometry intact. */
+body:has(#entry-symbols:not([hidden])) .notes-main{max-width:1120px;width:calc(100% - 72px)}
+@media(max-width:700px){
+ .notes-main{width:calc(100% - 36px);margin-top:48px}
+ .notes-tabs{margin-bottom:30px}
+ .notes-entry,.notes-list,.redacted-entry{max-width:100%}
+ .notes-prose,.notes-list,.redacted-entry p{font-size:15px}
+ #entry-appcycle .cross-poem{font-size:clamp(11px,3.05vw,13px)}
+ #entry-recap{width:96vw}
+ .recap-scattered{height:94vh;min-height:620px}
+ body:has(#entry-symbols:not([hidden])) .notes-main{width:calc(100% - 36px);margin-top:48px}
+}
 </style></head>
 <body>
 <div class="wrap">
