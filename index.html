@@ -43,14 +43,17 @@ body.notes-ripple-exit{pointer-events:none}
   const elements=[...document.querySelectorAll('.sidebar .brand,.sidebar .menu a,.sidebar .foot')];
   const pieces=[];
   elements.forEach(el=>{
-   const original=el.textContent;
+   const original=el.innerHTML;
+   const lines=el.classList.contains('foot') ? el.innerHTML.split(/<br\s*\/?\s*>/i).map(line=>{const temp=document.createElement('div');temp.innerHTML=line;return temp.textContent;}) : [el.textContent];
    el.setAttribute('data-ripple-original',original);
    el.textContent='';
-   for(const ch of original){
-    if(ch==='\n'){el.append(document.createElement('br'));continue}
-    const span=document.createElement('span');span.className='notes-ripple-char';span.textContent=ch;
-    el.append(span);if(ch.trim())pieces.push({span,ch});
-   }
+   lines.forEach((line,lineIndex)=>{
+    if(lineIndex)el.append(document.createElement('br'));
+    for(const ch of line){
+     const span=document.createElement('span');span.className='notes-ripple-char';span.textContent=ch;
+     el.append(span);if(ch.trim())pieces.push({span,ch});
+    }
+   });
   });
   // A continuous top-to-bottom wave across the actual rendered character positions.
   const coords=pieces.map(p=>({ ...p, rect:p.span.getBoundingClientRect()}));
@@ -73,7 +76,7 @@ body.notes-ripple-exit{pointer-events:none}
  addEventListener('pageshow',()=>{
   cancelPending();document.body.classList.remove('notes-ripple-exit');
   document.querySelectorAll('[data-ripple-original]').forEach(el=>{
-   el.textContent=el.getAttribute('data-ripple-original');el.removeAttribute('data-ripple-original');
+   el.innerHTML=el.getAttribute('data-ripple-original');el.removeAttribute('data-ripple-original');
   });
   leaving=false;
  });
