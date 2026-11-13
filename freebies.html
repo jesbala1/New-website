@@ -26,7 +26,20 @@
 #panel-creative .download figcaption {margin-top:7px;}
 @media(max-width:650px){#panel-creative{padding:0;}}
 </style>
-<style id="nav-unified">.menu .rhythms-nav{display:flex;flex-direction:column;align-items:flex-start;gap:13px}.menu .rhythms-nav a{display:block}.menu .rhythms-nav:hover a,.menu .rhythms-nav:focus-within a{color:#198a42}@media(max-width:650px){.menu .rhythms-nav{gap:11px}}</style></head>
+<style id="nav-unified">.menu .rhythms-nav{display:flex;flex-direction:column;align-items:flex-start;gap:13px}.menu .rhythms-nav a{display:block}.menu .rhythms-nav:hover a,.menu .rhythms-nav:focus-within a{color:#198a42}@media(max-width:650px){.menu .rhythms-nav{gap:11px}}</style><style>
+/* Artist Resources: one large, full-width project per row */
+#panel-resources .resource-list{max-width:none;width:100%;display:flex;flex-direction:column;gap:65px}
+#panel-resources .resource{display:block;padding:0;border:0;min-width:0}
+#panel-resources .resource-preview{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in;text-align:left}
+#panel-resources .resource-preview img{display:block;width:100%;height:auto;object-fit:contain}
+#panel-resources .resource-preview:hover img{opacity:.88}
+#panel-resources .resource-caption{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin-top:10px;font-size:12px;line-height:1.6}
+#panel-resources .resource-caption a{color:#2865b4;text-decoration:none;font-size:12px}
+#panel-resources .resource-caption a:hover{text-decoration:underline}
+#panel-resources .resource-description{margin:5px 0 0;color:#555;font-size:12px;line-height:1.6}
+#panel-resources .resource-preview:focus-visible,#panel-resources .resource-caption a:focus-visible{outline:1px solid var(--green);outline-offset:4px}
+@media(max-width:650px){#panel-resources .resource-list{gap:44px}}
+</style></head>
 <body><div class="layout"><aside class="sidebar"><a class="brand" href="/">JESBALA</a><nav aria-label="Main navigation" class="menu"><a href="hear-me.html">Hear Me</a><span class="rhythms-nav"><a href="rhythms.html">Rhythms that Reverberate</a><a class="indent" href="rhythms.html">and Tend to the Flame</a></span><a href="attached.html">a  t t  ached</a><a href="stay-for-a-minute.html">Stay for a Minute</a><a href="whisky.html">Whisky</a><a href="notes-app.html">Notes App</a><span class="break"></span><a aria-current="page" class="active" href="freebies.html">Freebies</a><a href="about.html">About</a></nav><div class="foot">Jesús Balandrano Ramírez<br/>Los Angeles, California</div></aside>
 <main class="main"><h1 class="page-title">Freebies</h1>
 <div aria-label="Freebies categories" class="subnav" role="tablist"><button aria-controls="panel-creative" aria-selected="true" id="tab-creative" role="tab" tabindex="0" type="button">Creative Downloads</button><span aria-hidden="true" class="slash">/</span><button aria-controls="panel-resources" aria-selected="false" id="tab-resources" role="tab" tabindex="-1" type="button">Artist Resources</button></div>
@@ -34,7 +47,7 @@
 <div aria-label="Downloadable coloring pages" class="gallery" id="coloring-gallery"></div><div class="empty" id="coloring-empty"><p>Coloring pages are available to download.</p><p>Click an image to preview it, or select [Download] to save the printable PDF.</p></div></section>
 <section aria-labelledby="tab-resources" class="panel" hidden="" id="panel-resources" role="tabpanel"><p class="section-intro">Tools, references, and other useful things for making and thinking about art.</p><div class="resource-list" id="resource-list"></div><div class="empty" id="resources-empty"><p>Artist resources are coming soon.</p><p>This space will grow as new materials are added.</p></div></section>
 </main></div>
-<div aria-hidden="true" aria-label="Expanded coloring page" aria-modal="true" class="lightbox" id="freebies-lightbox" role="dialog"><div class="lightbox-frame"><img alt="" class="lightbox-image"/><button aria-label="Close expanded artwork" class="lightbox-close" type="button">×</button></div></div>
+<div aria-hidden="true" aria-label="Expanded resource or coloring page" aria-modal="true" class="lightbox" id="freebies-lightbox" role="dialog"><div class="lightbox-frame"><img alt="" class="lightbox-image"/><button aria-label="Close expanded artwork" class="lightbox-close" type="button">×</button></div></div>
 <script>
 (()=>{
  const tabs=[...document.querySelectorAll('[role="tab"]')];
@@ -66,9 +79,24 @@
  const gallery=document.getElementById('coloring-gallery');
  coloringPages.forEach((item,i)=>{const figure=document.createElement('figure');figure.className='download';const a=document.createElement('a');a.href=item.preview;a.setAttribute('aria-label','Expand '+item.title);const img=document.createElement('img');img.src=item.preview;img.alt=item.title;img.loading=i<3?'eager':'lazy';a.append(img);a.className='image-link';a.addEventListener('click',e=>{e.preventDefault();openPreview(img)});const caption=document.createElement('figcaption');caption.append(document.createTextNode(item.title));const link=document.createElement('a');link.className='download-link';link.href=item.file;link.setAttribute('download','');link.textContent='[Download]';link.setAttribute('aria-label','Download '+item.title);caption.append(link);figure.append(a,caption);gallery.append(figure)});
  document.getElementById('coloring-empty').hidden=coloringPages.length>0;
- // ADD ARTIST RESOURCES HERE. Example: {title:'Resource title',description:'Brief description',url:'resources/example.pdf'}
- const resources=[];
- const list=document.getElementById('resource-list');resources.forEach(item=>{const row=document.createElement('article');row.className='resource';const info=document.createElement('div');const title=document.createElement('h3');title.textContent=item.title;const description=document.createElement('p');description.textContent=item.description||'';info.append(title,description);const a=document.createElement('a');a.href=item.url;a.textContent='Open ↗';row.append(info,a);list.append(row)});
- document.getElementById('resources-empty').hidden=resources.length>0;
+   // Each artist resource appears as a full-width preview with a download link.
+  // Add future projects to this array using the same format.
+  const resources=[
+   {title:'Inventory List Template',preview:'artist-resources/inventory.png',file:'artist-resources/Inventory_List_Template.indd',description:'Adobe InDesign template for cataloging artworks, with image, title, year, description, and size fields.'}
+  ];
+  const list=document.getElementById('resource-list');
+  resources.forEach(item=>{
+   const article=document.createElement('article');article.className='resource';
+   const preview=document.createElement('button');preview.type='button';preview.className='resource-preview';preview.setAttribute('aria-label','Expand '+item.title);
+   const img=document.createElement('img');img.src=item.preview;img.alt=item.title+' — example layout in Adobe InDesign';img.loading='lazy';preview.append(img);
+   preview.addEventListener('click',()=>openPreview(img));
+   const caption=document.createElement('div');caption.className='resource-caption';
+   const title=document.createElement('span');title.textContent=item.title;
+   const download=document.createElement('a');download.href=item.file;download.setAttribute('download','');download.textContent='[Download]';download.setAttribute('aria-label','Download '+item.title+' InDesign file');
+   caption.append(title,download);article.append(preview,caption);
+   if(item.description){const desc=document.createElement('p');desc.className='resource-description';desc.textContent=item.description;article.append(desc)}
+   list.append(article);
+  });
+  document.getElementById('resources-empty').hidden=resources.length>0;
 })();
 </script></body></html>
