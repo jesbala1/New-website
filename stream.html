@@ -1,4 +1,5 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stream — JESBALA</title><meta name="description" content="A living gallery of five original halftone artworks by JESBALA."><style>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Stream — JESBALA</title><meta content="A living gallery of five original halftone artworks by JESBALA." name="description"/><style>
 :root{--green:#198a42;--ink:#141414}*{box-sizing:border-box}
 body{margin:0;background:#fff;color:var(--ink);font:15px Arial,Helvetica,sans-serif}
 .layout{max-width:1550px;margin:auto;display:grid;grid-template-columns:250px minmax(0,1fr);gap:42px;padding:26px 36px 30px;min-height:100vh}
@@ -33,12 +34,36 @@ body.notes-ripple-exit{pointer-events:none}
 @media(max-width:850px){.layout{display:block;padding:20px}.sidebar{position:relative;height:auto;top:auto}.menu{margin-top:32px;display:flex;flex-flow:row wrap;gap:12px 18px}.menu .rhythms-nav{gap:4px}.menu a.indent{margin-top:0;padding-left:0}.menu .break{display:none}.foot{margin-top:24px}.main{margin-top:32px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;gap:26px 15px}.piece:nth-child(4),.piece:nth-child(5){grid-column:auto}.piece:nth-child(5){grid-column:1 / -1}.frame{height:clamp(200px,32vw,350px);flex:none}}
 @media(max-width:480px){.gallery{grid-template-columns:1fr}.piece:nth-child(5){grid-column:auto}.frame{height:64vw;min-height:225px}.story{max-width:unset}.meta{margin-top:4px}}
 @media(prefers-reduced-motion:reduce){.frame img{will-change:auto}}
-</style></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="index.html">JESBALA</a><nav aria-label="Main navigation" class="menu"><a href="hear-me.html">Hear Me</a><span class="rhythms-nav"><a href="rhythms.html">Rhythms that Reverberate</a><a class="indent" href="rhythms.html">and Tend to the Flame</a></span><a aria-current="page" class="active" href="stream.html">Stream</a><a href="attached.html">a  t t  ached</a><a href="stay-for-a-minute.html">Stay for a Minute</a><a href="whisky.html">Whisky</a><a href="notes-app.html">Notes App</a><span class="break"></span><a href="freebies.html">Freebies</a><a href="about.html">About</a></nav><div class="foot">Jesús Balandrano Ramírez<br/>Los Angeles, California</div></aside><main class="main"><div class="gallery" aria-label="Five artworks">
-<article class="piece" data-i="0"><div class="frame"><img src="stream-images/ys.png" alt="Original colorful halftone artwork, first in the series" loading="eager"></div><div class="meta"><p class="story">Backstory for this piece goes here.</p></div></article>
-<article class="piece" data-i="1"><div class="frame"><img src="stream-images/flyy.png" alt="Original colorful halftone artwork, second in the series" loading="eager"></div><div class="meta"><p class="story">Backstory for this piece goes here.</p></div></article>
-<article class="piece" data-i="2"><div class="frame"><img src="stream-images/k.png" alt="Original colorful halftone artwork, third in the series" loading="eager"></div><div class="meta"><p class="story">Backstory for this piece goes here.</p></div></article>
-<article class="piece" data-i="3"><div class="frame"><img src="stream-images/llll.png" alt="Original colorful halftone artwork, fourth in the series" loading="eager"></div><div class="meta"><p class="story">Backstory for this piece goes here.</p></div></article>
-<article class="piece" data-i="4"><div class="frame"><img src="stream-images/aim.png" alt="Original colorful halftone artwork, fifth in the series" loading="eager"></div><div class="meta"><p class="story">Backstory for this piece goes here.</p></div></article>
+</style><style id="jesbala-consistent-sidebar">
+/* Shared navigation geometry: identical on every non-Notes page. */
+@media (min-width: 851px) {
+  .layout { max-width:1550px !important; margin-left:auto !important; margin-right:auto !important; display:grid !important; grid-template-columns:250px minmax(0,1fr) !important; column-gap:42px !important; padding-left:36px !important; padding-right:36px !important; padding-top:26px !important; }
+  .layout > .sidebar { position:sticky !important; top:26px !important; height:calc(100vh - 52px) !important; margin:0 !important; padding:0 !important; display:flex !important; flex-direction:column !important; align-self:start !important; }
+  .layout > .sidebar .brand { display:inline-block !important; align-self:flex-start !important; margin:0 !important; padding:0 !important; font:400 16px Arial,Helvetica,sans-serif !important; letter-spacing:-.5px !important; line-height:normal !important; }
+  .layout > .sidebar .menu { display:flex !important; flex-direction:column !important; align-items:flex-start !important; flex-wrap:nowrap !important; gap:13px !important; margin:84px 0 0 !important; padding:0 !important; font:400 15px Arial,Helvetica,sans-serif !important; }
+  .layout > .sidebar .menu a { line-height:1.2 !important; margin-bottom:0 !important; }
+  .layout > .sidebar .menu .rhythms-nav { display:flex !important; flex-direction:column !important; align-items:flex-start !important; gap:13px !important; }
+  .layout > .sidebar .menu a.indent { padding-left:14px !important; margin-top:-10px !important; }
+  .layout > .sidebar .menu .break { display:block !important; height:17px !important; }
+  .layout > .sidebar .foot { margin:105px 0 0 !important; padding:0 !important; font:400 11px/1.45 Arial,Helvetica,sans-serif !important; }
+}
+@media (max-width:850px) {
+  .layout { display:block !important; padding:20px !important; }
+  .layout > .sidebar { position:relative !important; top:auto !important; height:auto !important; margin:0 !important; padding:0 !important; display:flex !important; flex-direction:column !important; }
+  .layout > .sidebar .brand { margin:0 !important; padding:0 !important; font:400 16px Arial,Helvetica,sans-serif !important; letter-spacing:-.5px !important; }
+  .layout > .sidebar .menu { margin:32px 0 0 !important; padding:0 !important; display:flex !important; flex-flow:row wrap !important; align-items:flex-start !important; gap:12px 18px !important; font:400 15px Arial,Helvetica,sans-serif !important; }
+  .layout > .sidebar .menu a { line-height:1.2 !important; }
+  .layout > .sidebar .menu .rhythms-nav { display:flex !important; flex-direction:column !important; gap:4px !important; }
+  .layout > .sidebar .menu a.indent { padding-left:0 !important; margin-top:0 !important; }
+  .layout > .sidebar .menu .break { display:none !important; }
+  .layout > .sidebar .foot { margin:24px 0 0 !important; padding:0 !important; font:400 11px/1.45 Arial,Helvetica,sans-serif !important; }
+}
+</style></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="index.html">JESBALA</a><nav aria-label="Main navigation" class="menu"><a href="hear-me.html">Hear Me</a><span class="rhythms-nav"><a href="rhythms.html">Rhythms that Reverberate</a><a class="indent" href="rhythms.html">and Tend to the Flame</a></span><a aria-current="page" class="active" href="stream.html">Stream</a><a href="attached.html">a  t t  ached</a><a href="stay-for-a-minute.html">Stay for a Minute</a><a href="whisky.html">Whisky</a><a href="notes-app.html">Notes App</a><span class="break"></span><a href="freebies.html">Freebies</a><a href="about.html">About</a></nav><div class="foot">Jesús Balandrano Ramírez<br/>Los Angeles, California</div></aside><main class="main"><div aria-label="Five artworks" class="gallery">
+<article class="piece" data-i="0"><div class="frame"><img alt="Original colorful halftone artwork, first in the series" loading="eager" src="stream-images/ys.png"/></div><div class="meta"><p class="story">Backstory for this piece goes here.</p></div></article>
+<article class="piece" data-i="1"><div class="frame"><img alt="Original colorful halftone artwork, second in the series" loading="eager" src="stream-images/flyy.png"/></div><div class="meta"><p class="story">Backstory for this piece goes here.</p></div></article>
+<article class="piece" data-i="2"><div class="frame"><img alt="Original colorful halftone artwork, third in the series" loading="eager" src="stream-images/k.png"/></div><div class="meta"><p class="story">Backstory for this piece goes here.</p></div></article>
+<article class="piece" data-i="3"><div class="frame"><img alt="Original colorful halftone artwork, fourth in the series" loading="eager" src="stream-images/llll.png"/></div><div class="meta"><p class="story">Backstory for this piece goes here.</p></div></article>
+<article class="piece" data-i="4"><div class="frame"><img alt="Original colorful halftone artwork, fifth in the series" loading="eager" src="stream-images/aim.png"/></div><div class="meta"><p class="story">Backstory for this piece goes here.</p></div></article>
 </div><footer class="endnote">© 2026 JESBALA</footer></main></div>
 <script>(()=>{'use strict';
 const pieces=[...document.querySelectorAll('.piece img')];
