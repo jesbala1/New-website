@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="TAJ — artwork by JESBALA" name="description"/>
+<title>TAJ — JESBALA</title>
+<!-- Version number helps Safari load updated CSS -->
+<link href="style.css?v=20261112-aligned" rel="stylesheet"/>
+<link href="sidebar-shared.css?v=20261112-aligned" rel="stylesheet"/>
+
+<style>.menu .rhythms-nav{display:flex;flex-direction:column;align-items:flex-start;gap:13px}.menu .rhythms-nav a{display:block}.menu .rhythms-nav:hover a,.menu .rhythms-nav:focus-within a{color:#198a42}@media(max-width:650px){.menu .rhythms-nav{gap:11px}}</style>
+<style id="nav-unified">.menu .rhythms-nav{display:flex;flex-direction:column;align-items:flex-start;gap:13px}.menu .rhythms-nav a{display:block}.menu .rhythms-nav:hover a,.menu .rhythms-nav:focus-within a{color:#198a42}@media(max-width:650px){.menu .rhythms-nav{gap:11px}}</style><style id="notes-ripple-style">
+.notes-ripple-char{display:inline-block;white-space:pre;will-change:transform,opacity,filter;transition:transform 640ms cubic-bezier(.2,.7,.2,1),opacity 590ms ease,filter 590ms ease;}
+.notes-ripple-char.ripple-away{transform:translate3d(5px,15px,0);opacity:0;filter:blur(2px)}
+body.notes-ripple-exit .sun-home{opacity:0;transform:translateY(14px);filter:blur(3px);transition:opacity 950ms ease,transform 950ms ease,filter 950ms ease}
+body.notes-ripple-exit{pointer-events:none}
+</style><style id="jesbala-consistent-sidebar">
+/* Shared navigation geometry: identical on every non-Notes page. */
+@media (min-width: 851px) {
+  .layout { max-width:1550px !important; margin-left:auto !important; margin-right:auto !important; display:grid !important; grid-template-columns:250px minmax(0,1fr) !important; column-gap:42px !important; padding-left:36px !important; padding-right:36px !important; padding-top:26px !important; }
+  .layout > .sidebar { position:sticky !important; top:26px !important; height:calc(100vh - 52px) !important; margin:0 !important; padding:0 !important; display:flex !important; flex-direction:column !important; align-self:start !important; }
+  .layout > .sidebar .brand { display:inline-block !important; align-self:flex-start !important; margin:0 !important; padding:0 !important; font:400 16px Arial,Helvetica,sans-serif !important; letter-spacing:-.5px !important; line-height:normal !important; }
+  .layout > .sidebar .menu { display:flex !important; flex-direction:column !important; align-items:flex-start !important; flex-wrap:nowrap !important; gap:13px !important; margin:84px 0 0 !important; padding:0 !important; font:400 15px Arial,Helvetica,sans-serif !important; }
+  .layout > .sidebar .menu a { line-height:1.2 !important; margin-bottom:0 !important; }
+  .layout > .sidebar .menu .rhythms-nav { display:flex !important; flex-direction:column !important; align-items:flex-start !important; gap:13px !important; }
+  .layout > .sidebar .menu a.indent { padding-left:14px !important; margin-top:-10px !important; }
+  .layout > .sidebar .menu .break { display:block !important; height:17px !important; }
+  .layout > .sidebar .foot { margin:105px 0 0 !important; padding:0 !important; font:400 11px/1.45 Arial,Helvetica,sans-serif !important; }
+}
+@media (max-width:850px) {
+  .layout { display:block !important; padding:20px !important; }
+  .layout > .sidebar { position:relative !important; top:auto !important; height:auto !important; margin:0 !important; padding:0 !important; display:flex !important; flex-direction:column !important; }
+  .layout > .sidebar .brand { margin:0 !important; padding:0 !important; font:400 16px Arial,Helvetica,sans-serif !important; letter-spacing:-.5px !important; }
+  .layout > .sidebar .menu { margin:32px 0 0 !important; padding:0 !important; display:flex !important; flex-flow:row wrap !important; align-items:flex-start !important; gap:12px 18px !important; font:400 15px Arial,Helvetica,sans-serif !important; }
+  .layout > .sidebar .menu a { line-height:1.2 !important; }
+  .layout > .sidebar .menu .rhythms-nav { display:flex !important; flex-direction:column !important; gap:4px !important; }
+  .layout > .sidebar .menu a.indent { padding-left:0 !important; margin-top:0 !important; }
+  .layout > .sidebar .menu .break { display:none !important; }
+  .layout > .sidebar .foot { margin:24px 0 0 !important; padding:0 !important; font:400 11px/1.45 Arial,Helvetica,sans-serif !important; }
+}
+</style><style id="taj-gallery-style">
+/* TAJ: large, uncropped images with generous breathing room. */
+.taj-main{min-width:0;padding:46px 0 75px!important;display:block!important}
+.taj-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 26px;align-items:start}
+.taj-work{margin:0;min-width:0;display:flex;align-items:center;justify-content:center}
+.taj-work img{display:block;max-width:100%;width:auto;height:auto;max-height:calc(100svh - 125px);object-fit:contain;cursor:zoom-in}
+.taj-work img:hover{opacity:.94}
+.taj-work:nth-child(3n+1){grid-column:1/-1}
+.taj-work:nth-child(3n+1) img{max-height:calc(100svh - 115px)}
+.taj-lightbox{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:42px;background:rgba(250,250,247,.78);-webkit-backdrop-filter:blur(19px);backdrop-filter:blur(19px)}
+.taj-lightbox.open{display:flex}
+.taj-lightbox-frame{position:relative;max-width:calc(100vw - 100px);max-height:calc(100dvh - 84px);display:flex;align-items:center;justify-content:center}
+.taj-lightbox-image{display:block;max-width:100%;max-height:calc(100dvh - 84px);object-fit:contain}
+.taj-lightbox-close{position:absolute;right:-31px;top:8px;border:0;background:none;font:24px Arial,sans-serif;cursor:pointer}
+@media(max-width:850px){.taj-main{padding:36px 0 55px!important}.taj-gallery{gap:26px 14px}}
+@media(max-width:600px){.taj-gallery{grid-template-columns:1fr;gap:35px}.taj-work,.taj-work:nth-child(3n+1){grid-column:auto}.taj-work img,.taj-work:nth-child(3n+1) img{max-height:85svh}.taj-lightbox{padding:20px}.taj-lightbox-frame{max-width:calc(100vw - 68px)}.taj-lightbox-image{max-height:calc(100dvh - 40px)}}
+</style></head>
+<body>
+<div class="layout homepage-layout">
+<aside class="sidebar"><a class="brand" href="/">JESBALA</a><nav aria-label="Main navigation" class="menu"><a href="hear-me.html">Hear Me</a><span class="rhythms-nav"><a href="rhythms.html">Rhythms that Reverberate</a><a class="indent" href="rhythms.html">and Tend to the Flame</a></span><a href="stream.html">Stream</a><a href="attached.html">a  t t  ached</a><a href="stay-for-a-minute.html">Stay for a Minute</a><a href="whisky.html">Whisky</a><a aria-current="page" class="active" href="taj.html">TAJ</a><a href="notes-app.html">Notes App</a><span class="break"></span><a href="freebies.html">Freebies</a><a href="about.html">About</a></nav><div class="foot">Jesús Balandrano Ramírez<br/>Los Angeles, California</div></aside>
+<main class="main taj-main"><div class="taj-gallery"><figure class="taj-work"><img alt="looking with flowers in arm" loading="lazy" src="taj-images/looking with flowers in arm.png"/></figure><figure class="taj-work"><img alt="happy tear" loading="lazy" src="taj-images/happy tear.png"/></figure><figure class="taj-work"><img alt="hat design 1" loading="lazy" src="taj-images/hat design 1.png"/></figure><figure class="taj-work"><img alt="hat design 2" loading="lazy" src="taj-images/hat design 2.png"/></figure><figure class="taj-work"><img alt="hat design 3" loading="lazy" src="taj-images/hat design 3.png"/></figure><figure class="taj-work"><img alt="Te" loading="lazy" src="taj-images/Te.png"/></figure><figure class="taj-work"><img alt="snake" loading="lazy" src="taj-images/snake.png"/></figure><figure class="taj-work"><img alt="pope hat" loading="lazy" src="taj-images/pope hat.png"/></figure></div></main>
+</div>
+<script id="notes-ripple-script">
+(()=>{
+ const link=document.querySelector('.menu a[href="notes-app.html"]');
+ if(!link)return;
+ let leaving=false, pending=[];
+ const symbols='01{}[]<>/\\*+~';
+ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function cancelPending(){pending.forEach(clearTimeout);pending=[]}
+ link.addEventListener('click',e=>{
+  if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||reduced())return;
+  e.preventDefault();if(leaving)return;leaving=true;
+  const destination=link.href;
+  // Wrap characters in place, preserving layout rather than freezing a screenshot of the sidebar.
+  const elements=[...document.querySelectorAll('.sidebar .brand,.sidebar .menu a,.sidebar .foot')];
+  const pieces=[];
+  elements.forEach(el=>{
+   const original=el.innerHTML;
+   const lines=el.classList.contains('foot') ? el.innerHTML.split(/<br\s*\/?\s*>/i).map(line=>{const temp=document.createElement('div');temp.innerHTML=line;return temp.textContent;}) : [el.textContent];
+   el.setAttribute('data-ripple-original',original);
+   el.textContent='';
+   lines.forEach((line,lineIndex)=>{
+    if(lineIndex)el.append(document.createElement('br'));
+    for(const ch of line){
+     const span=document.createElement('span');span.className='notes-ripple-char';span.textContent=ch;
+     el.append(span);if(ch.trim())pieces.push({span,ch});
+    }
+   });
+  });
+  // A continuous top-to-bottom wave across the actual rendered character positions.
+  const coords=pieces.map(p=>({ ...p, rect:p.span.getBoundingClientRect()}));
+  const top=Math.min(...coords.map(p=>p.rect.top));
+  const bottom=Math.max(...coords.map(p=>p.rect.bottom));
+  document.body.classList.add('notes-ripple-exit');
+  const total=1150;
+  coords.forEach(({span,ch,rect},i)=>{
+   const vertical=(rect.top-top)/Math.max(1,bottom-top);
+   const horizontal=rect.left/Math.max(1,innerWidth);
+   const delay=Math.round(90+vertical*560+horizontal*90);
+   pending.push(setTimeout(()=>{
+    // One soft code change as the wave reaches each letter, not repeated scrambling.
+    span.textContent=symbols[(i*7+Math.floor(vertical*13))%symbols.length];
+    span.classList.add('ripple-away');
+   },delay));
+  });
+  pending.push(setTimeout(()=>location.assign(destination),total));
+ });
+ addEventListener('pageshow',()=>{
+  cancelPending();document.body.classList.remove('notes-ripple-exit');
+  document.querySelectorAll('[data-ripple-original]').forEach(el=>{
+   el.innerHTML=el.getAttribute('data-ripple-original');el.removeAttribute('data-ripple-original');
+  });
+  leaving=false;
+ });
+})();
+</script><div aria-hidden="true" aria-label="Expanded artwork" aria-modal="true" class="taj-lightbox" id="taj-lightbox" role="dialog"><div class="taj-lightbox-frame"><button aria-label="Close" class="taj-lightbox-close" type="button">×</button><img alt="" class="taj-lightbox-image"/></div></div><script>(()=>{const lb=document.getElementById('taj-lightbox'),full=lb.querySelector('img'),close=lb.querySelector('button');let prev;document.querySelectorAll('.taj-work img').forEach(img=>img.addEventListener('click',()=>{prev=document.activeElement;full.src=img.src;full.alt=img.alt;lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';close.focus()}));function hide(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');full.removeAttribute('src');document.body.style.overflow='';prev?.focus()}close.addEventListener('click',hide);lb.addEventListener('click',e=>{if(e.target===lb)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))hide()})})();</script></body>
+</html>
