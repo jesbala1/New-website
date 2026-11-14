@@ -25,6 +25,16 @@
 #panel-creative .download img {background:#fff;}
 #panel-creative .download figcaption {margin-top:7px;}
 @media(max-width:650px){#panel-creative{padding:0;}}
+</style><style id="bead-loom-style">
+/* Bead loom patterns: same preview / caption / download format as coloring pages. */
+.bead-loom-section{margin-top:78px}
+.bead-loom-section .section-heading{margin-bottom:15px}
+.bead-loom-description{max-width:660px;font-size:13px;line-height:1.7;color:#555;margin:0 0 12px}
+.bead-loom-gallery{margin-top:31px}
+.bead-loom-gallery .download img{aspect-ratio:1/1;object-fit:contain;background:transparent}
+.bead-loom-gallery .download .image-link:hover img{opacity:.76}
+.bead-loom-gallery .download.reference-photo img{object-fit:contain}
+@media(max-width:650px){.bead-loom-section{margin-top:58px}.bead-loom-gallery{margin-top:24px}.bead-loom-gallery .reference-photo{grid-column:span 2;max-width:65%;justify-self:center}}
 </style>
 <style id="nav-unified">.menu .rhythms-nav{display:flex;flex-direction:column;align-items:flex-start;gap:13px}.menu .rhythms-nav a{display:block}.menu .rhythms-nav:hover a,.menu .rhythms-nav:focus-within a{color:#198a42}@media(max-width:650px){.menu .rhythms-nav{gap:11px}}</style><style>
 /* Artist Resources: one large, full-width project per row */
@@ -49,7 +59,16 @@ body.notes-ripple-exit{pointer-events:none}
 <main class="main"><h1 class="page-title">Freebies</h1>
 <div aria-label="Freebies categories" class="subnav" role="tablist"><button aria-controls="panel-creative" aria-selected="true" id="tab-creative" role="tab" tabindex="0" type="button">Creative Downloads</button><span aria-hidden="true" class="slash">/</span><button aria-controls="panel-resources" aria-selected="false" id="tab-resources" role="tab" tabindex="-1" type="button">Artist Resources</button></div>
 <section aria-labelledby="tab-creative" class="panel" id="panel-creative" role="tabpanel"><h2 class="section-heading">Coloring Pages</h2>
-<div aria-label="Downloadable coloring pages" class="gallery" id="coloring-gallery"></div><div class="empty" id="coloring-empty"><p>Coloring pages are available to download.</p><p>Click an image to preview it, or select [Download] to save the printable PDF.</p></div></section>
+<div aria-label="Downloadable coloring pages" class="gallery" id="coloring-gallery"></div><div class="empty" id="coloring-empty"><p>Coloring pages are available to download.</p><p>Click an image to preview it, or select [Download] to save the printable PDF.</p></div>
+<section class="bead-loom-section" aria-labelledby="bead-loom-heading">
+<h2 class="section-heading" id="bead-loom-heading">Bead Loom Patterns</h2>
+<p class="bead-loom-description">Pixel art patterns for bead loom weaving. Each square corresponds to one bead, allowing you to recreate the design on your loom.</p>
+<p class="bead-loom-description">I like using seed beads for my weaving projects. You can experiment with different bead colors to make each pattern your own.</p>
+<div class="gallery bead-loom-gallery" aria-label="Downloadable bead loom patterns">
+<figure class="download"><a class="image-link bead-preview" href="freebies-bead-loom/ESPOOKY.jpg" aria-label="Expand Espooky bead loom pattern"><img src="freebies-bead-loom/ESPOOKY.jpg" alt="Espooky pixel-grid bead loom pattern" loading="lazy"></a><figcaption>Espooky <a class="download-link" href="freebies-bead-loom/ESPOOKY.jpg" download="ESPOOKY.jpg" aria-label="Download Espooky bead loom pattern">[Download]</a></figcaption></figure>
+<figure class="download"><a class="image-link bead-preview" href="freebies-bead-loom/REVOLUCION.jpg" aria-label="Expand Revolución bead loom pattern"><img src="freebies-bead-loom/REVOLUCION.jpg" alt="Revolución pixel-grid bead loom pattern" loading="lazy"></a><figcaption>Revolución <a class="download-link" href="freebies-bead-loom/REVOLUCION.jpg" download="REVOLUCION.jpg" aria-label="Download Revolución bead loom pattern">[Download]</a></figcaption></figure>
+<figure class="download reference-photo"><a class="image-link bead-preview" href="freebies-bead-loom/holding-work.png" aria-label="Expand finished beadwork photograph"><img src="freebies-bead-loom/holding-work.png" alt="Hand holding finished woven beadwork" loading="lazy"></a><figcaption>Finished beadwork</figcaption></figure>
+</div></section></section>
 <section aria-labelledby="tab-resources" class="panel" hidden="" id="panel-resources" role="tabpanel"><div class="resource-list" id="resource-list"></div><div class="empty" id="resources-empty"><p>Artist resources are coming soon.</p><p>This space will grow as new materials are added.</p></div></section>
 <p class="endnote">© 2026 JESBALA</p></main></div>
 <div aria-hidden="true" aria-label="Expanded resource or coloring page" aria-modal="true" class="lightbox" id="freebies-lightbox" role="dialog"><div class="lightbox-frame"><img alt="" class="lightbox-image"/><button aria-label="Close expanded artwork" class="lightbox-close" type="button">×</button></div></div>
@@ -81,6 +100,7 @@ body.notes-ripple-exit{pointer-events:none}
  close.addEventListener('click',closePreview);
  viewer.addEventListener('click',e=>{if(e.target===viewer)closePreview()});
  document.addEventListener('keydown',e=>{if(!viewer.classList.contains('open'))return;if(e.key==='Escape')closePreview();if(e.key==='Tab'){e.preventDefault();close.focus()}});
+  document.querySelectorAll('.bead-preview').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openPreview(a.querySelector('img'))}));
  const gallery=document.getElementById('coloring-gallery');
  coloringPages.forEach((item,i)=>{const figure=document.createElement('figure');figure.className='download';const a=document.createElement('a');a.href=item.preview;a.setAttribute('aria-label','Expand '+item.title);const img=document.createElement('img');img.src=item.preview;img.alt=item.title;img.loading=i<3?'eager':'lazy';a.append(img);a.className='image-link';a.addEventListener('click',e=>{e.preventDefault();openPreview(img)});const caption=document.createElement('figcaption');caption.append(document.createTextNode(item.title));const link=document.createElement('a');link.className='download-link';link.href=item.file;link.setAttribute('download','');link.textContent='[Download]';link.setAttribute('aria-label','Download '+item.title);caption.append(link);figure.append(a,caption);gallery.append(figure)});
  document.getElementById('coloring-empty').hidden=coloringPages.length>0;
