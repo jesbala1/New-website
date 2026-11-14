@@ -10,11 +10,70 @@ body{background:#fff;color:#171717}.rhythms-main{min-width:0;width:100%;padding:
 .rhythm-media .rhythm-image img{width:auto;max-width:100%;height:auto;max-height:88svh}
 .rhythm-media figcaption{align-self:stretch;text-align:left;margin:8px 0 0;font-size:12px;line-height:1.5}
 @media(max-width:650px){.rhythms-main{padding-top:25px}.rhythm-media .rhythm-image img{max-height:78svh}}
-</style><style id="nav-unified">.menu .rhythms-nav{display:flex;flex-direction:column;align-items:flex-start;gap:13px}.menu .rhythms-nav a{display:block}.menu .rhythms-nav:hover a,.menu .rhythms-nav:focus-within a{color:#198a42}@media(max-width:650px){.menu .rhythms-nav{gap:11px}}</style></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="/">JESBALA</a><nav aria-label="Main navigation" class="menu"><a href="hear-me.html">Hear Me</a><span class="rhythms-nav"><a aria-current="page" class="active" href="rhythms.html">Rhythms that Reverberate</a><a aria-current="page" class="indent active" href="rhythms.html">and Tend to the Flame</a></span><a href="attached.html">a  t t  ached</a><a href="stay-for-a-minute.html">Stay for a Minute</a><a href="whisky.html">Whisky</a><a href="notes-app.html">Notes App</a><span class="break"></span><a href="freebies.html">Freebies</a><a href="about.html">About</a></nav><div class="foot">Jesús Balandrano Ramírez<br/>Los Angeles, California</div></aside><main class="main rhythms-main"><section aria-label="Rhythms artwork series" class="rhythms-gallery"><figure class="rhythm-work"><div class="rhythm-media"><button aria-label="Expand cactus" class="rhythm-image" type="button"><img alt="cactus" decoding="async" loading="eager" src="rhythms-images/cactus.jpg"/></button><figcaption>cactus</figcaption></div></figure>
+</style><style id="nav-unified">.menu .rhythms-nav{display:flex;flex-direction:column;align-items:flex-start;gap:13px}.menu .rhythms-nav a{display:block}.menu .rhythms-nav:hover a,.menu .rhythms-nav:focus-within a{color:#198a42}@media(max-width:650px){.menu .rhythms-nav{gap:11px}}</style><style id="notes-ripple-style">
+.notes-ripple-char{display:inline-block;white-space:pre;will-change:transform,opacity,filter;transition:transform 640ms cubic-bezier(.2,.7,.2,1),opacity 590ms ease,filter 590ms ease;}
+.notes-ripple-char.ripple-away{transform:translate3d(5px,15px,0);opacity:0;filter:blur(2px)}
+body.notes-ripple-exit .main{opacity:0;transform:translateY(14px);filter:blur(3px);transition:opacity 950ms ease,transform 950ms ease,filter 950ms ease}
+body.notes-ripple-exit{pointer-events:none}
+</style><style id="jesbala-footer-style">.endnote{font-size:11px;color:#999;border-top:1px solid #eee;padding-top:22px;margin-top:80px}</style></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="/">JESBALA</a><nav aria-label="Main navigation" class="menu"><a href="hear-me.html">Hear Me</a><span class="rhythms-nav"><a aria-current="page" class="active" href="rhythms.html">Rhythms that Reverberate</a><a aria-current="page" class="indent active" href="rhythms.html">and Tend to the Flame</a></span><a href="attached.html">a  t t  ached</a><a href="stay-for-a-minute.html">Stay for a Minute</a><a href="whisky.html">Whisky</a><a href="notes-app.html">Notes App</a><span class="break"></span><a href="freebies.html">Freebies</a><a href="about.html">About</a></nav><div class="foot">Jesús Balandrano Ramírez<br/>Los Angeles, California</div></aside><main class="main rhythms-main"><section aria-label="Rhythms artwork series" class="rhythms-gallery"><figure class="rhythm-work"><div class="rhythm-media"><button aria-label="Expand cactus" class="rhythm-image" type="button"><img alt="cactus" decoding="async" loading="eager" src="rhythms-images/cactus.jpg"/></button><figcaption>cactus</figcaption></div></figure>
 <figure class="rhythm-work"><div class="rhythm-media"><button aria-label="Expand mount" class="rhythm-image" type="button"><img alt="mount" decoding="async" loading="lazy" src="rhythms-images/mount.jpg"/></button><figcaption>mount</figcaption></div></figure>
 <figure class="rhythm-work"><div class="rhythm-media"><button aria-label="Expand Nostalga" class="rhythm-image" type="button"><img alt="Nostalga" decoding="async" loading="lazy" src="rhythms-images/Nostalga.jpg"/></button><figcaption>Nostalga</figcaption></div></figure>
 <figure class="rhythm-work"><div class="rhythm-media"><button aria-label="Expand plant" class="rhythm-image" type="button"><img alt="plant" decoding="async" loading="lazy" src="rhythms-images/plant.jpg"/></button><figcaption>plant</figcaption></div></figure>
 <figure class="rhythm-work"><div class="rhythm-media"><button aria-label="Expand Pointy" class="rhythm-image" type="button"><img alt="Pointy" decoding="async" loading="lazy" src="rhythms-images/Pointy.jpg"/></button><figcaption>Pointy</figcaption></div></figure>
 <figure class="rhythm-work"><div class="rhythm-media"><button aria-label="Expand queenstown" class="rhythm-image" type="button"><img alt="queenstown" decoding="async" loading="lazy" src="rhythms-images/queenstown.jpg"/></button><figcaption>queenstown</figcaption></div></figure>
 <figure class="rhythm-work"><div class="rhythm-media"><button aria-label="Expand spike" class="rhythm-image" type="button"><img alt="spike" decoding="async" loading="lazy" src="rhythms-images/spike.jpg"/></button><figcaption>spike</figcaption></div></figure>
-<figure class="rhythm-work"><div class="rhythm-media"><button aria-label="Expand swirlz" class="rhythm-image" type="button"><img alt="swirlz" decoding="async" loading="lazy" src="rhythms-images/swirlz.jpg"/></button><figcaption>swirlz</figcaption></div></figure></section></main></div><div aria-hidden="true" aria-label="Expanded artwork" aria-modal="true" class="lightbox" id="rhythms-lightbox" role="dialog"><div class="lightbox-frame"><img alt="" class="lightbox-image"/><button aria-label="Close expanded artwork" class="lightbox-close" type="button">×</button></div></div><script>(()=>{const viewer=document.getElementById('rhythms-lightbox'),large=viewer.querySelector('img'),close=viewer.querySelector('button');let previousFocus;function open(img){previousFocus=document.activeElement;large.src=img.src;large.alt=img.alt;viewer.classList.add('open');viewer.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-active');close.focus()}function hide(){viewer.classList.remove('open');viewer.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-active');large.removeAttribute('src');if(previousFocus?.focus)previousFocus.focus()}document.querySelectorAll('.rhythm-image').forEach(b=>b.addEventListener('click',()=>open(b.querySelector('img'))));close.addEventListener('click',hide);viewer.addEventListener('click',e=>{if(e.target===viewer)hide()});document.addEventListener('keydown',e=>{if(viewer.classList.contains('open')&&e.key==='Escape')hide()})})();</script></body></html>
+<figure class="rhythm-work"><div class="rhythm-media"><button aria-label="Expand swirlz" class="rhythm-image" type="button"><img alt="swirlz" decoding="async" loading="lazy" src="rhythms-images/swirlz.jpg"/></button><figcaption>swirlz</figcaption></div></figure></section><p class="endnote">© 2026 JESBALA</p></main></div><div aria-hidden="true" aria-label="Expanded artwork" aria-modal="true" class="lightbox" id="rhythms-lightbox" role="dialog"><div class="lightbox-frame"><img alt="" class="lightbox-image"/><button aria-label="Close expanded artwork" class="lightbox-close" type="button">×</button></div></div><script>(()=>{const viewer=document.getElementById('rhythms-lightbox'),large=viewer.querySelector('img'),close=viewer.querySelector('button');let previousFocus;function open(img){previousFocus=document.activeElement;large.src=img.src;large.alt=img.alt;viewer.classList.add('open');viewer.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-active');close.focus()}function hide(){viewer.classList.remove('open');viewer.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-active');large.removeAttribute('src');if(previousFocus?.focus)previousFocus.focus()}document.querySelectorAll('.rhythm-image').forEach(b=>b.addEventListener('click',()=>open(b.querySelector('img'))));close.addEventListener('click',hide);viewer.addEventListener('click',e=>{if(e.target===viewer)hide()});document.addEventListener('keydown',e=>{if(viewer.classList.contains('open')&&e.key==='Escape')hide()})})();</script><script id="notes-ripple-script">
+(()=>{
+ const link=document.querySelector('.menu a[href="notes-app.html"]');
+ if(!link)return;
+ let leaving=false, pending=[];
+ const symbols='01{}[]<>/\\*+~';
+ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function cancelPending(){pending.forEach(clearTimeout);pending=[]}
+ link.addEventListener('click',e=>{
+  if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||reduced())return;
+  e.preventDefault();if(leaving)return;leaving=true;
+  const destination=link.href;
+  // Wrap characters in place, preserving layout rather than freezing a screenshot of the sidebar.
+  const elements=[...document.querySelectorAll('.sidebar .brand,.sidebar .menu a,.sidebar .foot')];
+  const pieces=[];
+  elements.forEach(el=>{
+   const original=el.innerHTML;
+   const lines=el.classList.contains('foot') ? el.innerHTML.split(/<br\s*\/?\s*>/i).map(line=>{const temp=document.createElement('div');temp.innerHTML=line;return temp.textContent;}) : [el.textContent];
+   el.setAttribute('data-ripple-original',original);
+   el.textContent='';
+   lines.forEach((line,lineIndex)=>{
+    if(lineIndex)el.append(document.createElement('br'));
+    for(const ch of line){
+     const span=document.createElement('span');span.className='notes-ripple-char';span.textContent=ch;
+     el.append(span);if(ch.trim())pieces.push({span,ch});
+    }
+   });
+  });
+  // A continuous top-to-bottom wave across the actual rendered character positions.
+  const coords=pieces.map(p=>({ ...p, rect:p.span.getBoundingClientRect()}));
+  const top=Math.min(...coords.map(p=>p.rect.top));
+  const bottom=Math.max(...coords.map(p=>p.rect.bottom));
+  document.body.classList.add('notes-ripple-exit');
+  const total=1150;
+  coords.forEach(({span,ch,rect},i)=>{
+   const vertical=(rect.top-top)/Math.max(1,bottom-top);
+   const horizontal=rect.left/Math.max(1,innerWidth);
+   const delay=Math.round(90+vertical*560+horizontal*90);
+   pending.push(setTimeout(()=>{
+    // One soft code change as the wave reaches each letter, not repeated scrambling.
+    span.textContent=symbols[(i*7+Math.floor(vertical*13))%symbols.length];
+    span.classList.add('ripple-away');
+   },delay));
+  });
+  pending.push(setTimeout(()=>location.assign(destination),total));
+ });
+ addEventListener('pageshow',()=>{
+  cancelPending();document.body.classList.remove('notes-ripple-exit');
+  document.querySelectorAll('[data-ripple-original]').forEach(el=>{
+   el.innerHTML=el.getAttribute('data-ripple-original');el.removeAttribute('data-ripple-original');
+  });
+  leaving=false;
+ });
+})();
+</script></body></html>

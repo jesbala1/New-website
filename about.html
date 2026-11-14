@@ -13,6 +13,65 @@
 .about-content{grid-template-columns:minmax(260px,.82fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
 .about-portrait{max-width:460px}
 @media(max-width:850px){.about-content{grid-template-columns:1fr}.about-portrait{max-width:520px}}
-</style></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="index.html">JESBALA</a><nav aria-label="Main navigation" class="menu"><a href="hear-me.html">Hear Me</a><span class="rhythms-nav"><a href="rhythms.html">Rhythms that Reverberate</a><a class="indent" href="rhythms.html">and Tend to the Flame</a></span><a href="attached.html">a  t t  ached</a><a href="stay-for-a-minute.html">Stay for a Minute</a><a href="whisky.html">Whisky</a><a href="notes-app.html">Notes App</a><span class="break"></span><a href="freebies.html">Freebies</a><a aria-current="page" class="active" href="about.html">About</a></nav><div class="foot">Jesús Balandrano Ramírez<br/>Los Angeles, California</div></aside><main class="main"><div class="about-content"><figure class="about-portrait"><img alt="Purple halftone self-portrait against a black-and-white patterned background" src="about-portrait.png"/></figure><div class="copy"><p>The textures and rhythms of the everyday inspire me to reimagine them in different ways and create new meanings. I am intrigued by the cycles of life, how the mind and body processes transitions, and where moments of connection lie in all of this. 
+</style><style id="notes-ripple-style">
+.notes-ripple-char{display:inline-block;white-space:pre;will-change:transform,opacity,filter;transition:transform 640ms cubic-bezier(.2,.7,.2,1),opacity 590ms ease,filter 590ms ease;}
+.notes-ripple-char.ripple-away{transform:translate3d(5px,15px,0);opacity:0;filter:blur(2px)}
+body.notes-ripple-exit .main{opacity:0;transform:translateY(14px);filter:blur(3px);transition:opacity 950ms ease,transform 950ms ease,filter 950ms ease}
+body.notes-ripple-exit{pointer-events:none}
+</style><style id="jesbala-footer-style">.endnote{font-size:11px;color:#999;border-top:1px solid #eee;padding-top:22px;margin-top:80px}</style></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="index.html">JESBALA</a><nav aria-label="Main navigation" class="menu"><a href="hear-me.html">Hear Me</a><span class="rhythms-nav"><a href="rhythms.html">Rhythms that Reverberate</a><a class="indent" href="rhythms.html">and Tend to the Flame</a></span><a href="attached.html">a  t t  ached</a><a href="stay-for-a-minute.html">Stay for a Minute</a><a href="whisky.html">Whisky</a><a href="notes-app.html">Notes App</a><span class="break"></span><a href="freebies.html">Freebies</a><a aria-current="page" class="active" href="about.html">About</a></nav><div class="foot">Jesús Balandrano Ramírez<br/>Los Angeles, California</div></aside><main class="main"><div class="about-content"><figure class="about-portrait"><img alt="Purple halftone self-portrait against a black-and-white patterned background" src="about-portrait.png"/></figure><div class="copy"><p>The textures and rhythms of the everyday inspire me to reimagine them in different ways and create new meanings. I am intrigued by the cycles of life, how the mind and body processes transitions, and where moments of connection lie in all of this. 
 
-Jesús Balandrano Ramírez is an artist, producer, and MFT/Art Therapy trainee based in Los Angeles, CA. He received his BA’s in Art and Sociology from UC Santa Barbara, and is currently pursuing a MA in Marital and Family Therapy with a Specialization in Art Therapy from Loyola Marymount University.</p><p><a href="mailto:j.jesbala@gmail.com">Contact</a> · <a href="https://www.instagram.com/jesbala/" rel="noopener noreferrer" target="_blank">Instagram</a> · <a href="CV - OCT 2026.pdf" rel="noopener noreferrer" target="_blank">CV</a></p></div></div></main></div></body></html>
+Jesús Balandrano Ramírez is an artist, producer, and MFT/Art Therapy trainee based in Los Angeles, CA. He received his BA’s in Art and Sociology from UC Santa Barbara, and is currently pursuing a MA in Marital and Family Therapy with a Specialization in Art Therapy from Loyola Marymount University.</p><p><a href="mailto:j.jesbala@gmail.com">Contact</a> · <a href="https://www.instagram.com/jesbala/" rel="noopener noreferrer" target="_blank">Instagram</a> · <a href="CV - OCT 2026.pdf" rel="noopener noreferrer" target="_blank">CV</a></p></div></div><p class="endnote">© 2026 JESBALA</p></main></div><script id="notes-ripple-script">
+(()=>{
+ const link=document.querySelector('.menu a[href="notes-app.html"]');
+ if(!link)return;
+ let leaving=false, pending=[];
+ const symbols='01{}[]<>/\\*+~';
+ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function cancelPending(){pending.forEach(clearTimeout);pending=[]}
+ link.addEventListener('click',e=>{
+  if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||reduced())return;
+  e.preventDefault();if(leaving)return;leaving=true;
+  const destination=link.href;
+  // Wrap characters in place, preserving layout rather than freezing a screenshot of the sidebar.
+  const elements=[...document.querySelectorAll('.sidebar .brand,.sidebar .menu a,.sidebar .foot')];
+  const pieces=[];
+  elements.forEach(el=>{
+   const original=el.innerHTML;
+   const lines=el.classList.contains('foot') ? el.innerHTML.split(/<br\s*\/?\s*>/i).map(line=>{const temp=document.createElement('div');temp.innerHTML=line;return temp.textContent;}) : [el.textContent];
+   el.setAttribute('data-ripple-original',original);
+   el.textContent='';
+   lines.forEach((line,lineIndex)=>{
+    if(lineIndex)el.append(document.createElement('br'));
+    for(const ch of line){
+     const span=document.createElement('span');span.className='notes-ripple-char';span.textContent=ch;
+     el.append(span);if(ch.trim())pieces.push({span,ch});
+    }
+   });
+  });
+  // A continuous top-to-bottom wave across the actual rendered character positions.
+  const coords=pieces.map(p=>({ ...p, rect:p.span.getBoundingClientRect()}));
+  const top=Math.min(...coords.map(p=>p.rect.top));
+  const bottom=Math.max(...coords.map(p=>p.rect.bottom));
+  document.body.classList.add('notes-ripple-exit');
+  const total=1150;
+  coords.forEach(({span,ch,rect},i)=>{
+   const vertical=(rect.top-top)/Math.max(1,bottom-top);
+   const horizontal=rect.left/Math.max(1,innerWidth);
+   const delay=Math.round(90+vertical*560+horizontal*90);
+   pending.push(setTimeout(()=>{
+    // One soft code change as the wave reaches each letter, not repeated scrambling.
+    span.textContent=symbols[(i*7+Math.floor(vertical*13))%symbols.length];
+    span.classList.add('ripple-away');
+   },delay));
+  });
+  pending.push(setTimeout(()=>location.assign(destination),total));
+ });
+ addEventListener('pageshow',()=>{
+  cancelPending();document.body.classList.remove('notes-ripple-exit');
+  document.querySelectorAll('[data-ripple-original]').forEach(el=>{
+   el.innerHTML=el.getAttribute('data-ripple-original');el.removeAttribute('data-ripple-original');
+  });
+  leaving=false;
+ });
+})();
+</script></body></html>
