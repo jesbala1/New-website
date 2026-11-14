@@ -49,7 +49,7 @@
 #panel-resources .resource-description{width:100%;box-sizing:border-box;text-align:left;margin:5px 0 0;color:#555;font-size:12px;line-height:1.6}
 #panel-resources .resource-preview:focus-visible,#panel-resources .resource-caption a:focus-visible{outline:1px solid var(--green);outline-offset:4px}
 @media(max-width:650px){#panel-resources .resource-list{gap:44px}}
-</style><style id="notes-ripple-style">
+</style><style id="resource-description-above-style">#panel-resources .resource-description{margin:0 0 16px}</style><style id="notes-ripple-style">
 .notes-ripple-char{display:inline-block;white-space:pre;will-change:transform,opacity,filter;transition:transform 640ms cubic-bezier(.2,.7,.2,1),opacity 590ms ease,filter 590ms ease;}
 .notes-ripple-char.ripple-away{transform:translate3d(5px,15px,0);opacity:0;filter:blur(2px)}
 body.notes-ripple-exit .main{opacity:0;transform:translateY(14px);filter:blur(3px);transition:opacity 950ms ease,transform 950ms ease,filter 950ms ease}
@@ -60,7 +60,8 @@ body.notes-ripple-exit{pointer-events:none}
 <div aria-label="Freebies categories" class="subnav" role="tablist"><button aria-controls="panel-creative" aria-selected="true" id="tab-creative" role="tab" tabindex="0" type="button">Creative Downloads</button><span aria-hidden="true" class="slash">/</span><button aria-controls="panel-resources" aria-selected="false" id="tab-resources" role="tab" tabindex="-1" type="button">Artist Resources</button></div>
 <section aria-labelledby="tab-creative" class="panel" id="panel-creative" role="tabpanel"><h2 class="section-heading">Coloring Pages</h2>
 <div aria-label="Downloadable coloring pages" class="gallery" id="coloring-gallery"></div><div class="empty" id="coloring-empty"><p>Coloring pages are available to download.</p><p>Click an image to preview it, or select [Download] to save the printable PDF.</p></div>
-<section class="bead-loom-section" aria-labelledby="bead-loom-heading">
+</section>
+<section aria-labelledby="tab-resources" class="panel" hidden="" id="panel-resources" role="tabpanel"><div class="resource-list" id="resource-list"></div><section class="bead-loom-section" aria-labelledby="bead-loom-heading">
 <h2 class="section-heading" id="bead-loom-heading">Bead Loom Patterns</h2>
 <p class="bead-loom-description">Pixel art patterns for bead loom weaving. Each square corresponds to one bead, allowing you to recreate the design on your loom.</p>
 <p class="bead-loom-description">I like using seed beads for my weaving projects. You can experiment with different bead colors to make each pattern your own.</p>
@@ -68,8 +69,7 @@ body.notes-ripple-exit{pointer-events:none}
 <figure class="download"><a class="image-link bead-preview" href="freebies-bead-loom/ESPOOKY.jpg" aria-label="Expand Espooky bead loom pattern"><img src="freebies-bead-loom/ESPOOKY.jpg" alt="Espooky pixel-grid bead loom pattern" loading="lazy"></a><figcaption>Espooky <a class="download-link" href="freebies-bead-loom/ESPOOKY.jpg" download="ESPOOKY.jpg" aria-label="Download Espooky bead loom pattern">[Download]</a></figcaption></figure>
 <figure class="download"><a class="image-link bead-preview" href="freebies-bead-loom/REVOLUCION.jpg" aria-label="Expand Revolución bead loom pattern"><img src="freebies-bead-loom/REVOLUCION.jpg" alt="Revolución pixel-grid bead loom pattern" loading="lazy"></a><figcaption>Revolución <a class="download-link" href="freebies-bead-loom/REVOLUCION.jpg" download="REVOLUCION.jpg" aria-label="Download Revolución bead loom pattern">[Download]</a></figcaption></figure>
 <figure class="download reference-photo"><a class="image-link bead-preview" href="freebies-bead-loom/holding-work.png" aria-label="Expand finished beadwork photograph"><img src="freebies-bead-loom/holding-work.png" alt="Hand holding finished woven beadwork" loading="lazy"></a><figcaption>Finished beadwork</figcaption></figure>
-</div></section></section>
-<section aria-labelledby="tab-resources" class="panel" hidden="" id="panel-resources" role="tabpanel"><div class="resource-list" id="resource-list"></div><div class="empty" id="resources-empty"><p>Artist resources are coming soon.</p><p>This space will grow as new materials are added.</p></div></section>
+</div></section><div class="empty" id="resources-empty"><p>Artist resources are coming soon.</p><p>This space will grow as new materials are added.</p></div></section>
 <p class="endnote">© 2026 JESBALA</p></main></div>
 <div aria-hidden="true" aria-label="Expanded resource or coloring page" aria-modal="true" class="lightbox" id="freebies-lightbox" role="dialog"><div class="lightbox-frame"><img alt="" class="lightbox-image"/><button aria-label="Close expanded artwork" class="lightbox-close" type="button">×</button></div></div>
 <script>
@@ -118,8 +118,9 @@ body.notes-ripple-exit{pointer-events:none}
    const caption=document.createElement('div');caption.className='resource-caption';
    const title=document.createElement('span');title.textContent=item.title;
    const download=document.createElement('a');download.href=item.file;download.setAttribute('download','');download.textContent='[Download]';download.setAttribute('aria-label','Download '+item.title+' InDesign file');
-   caption.append(title,download);article.append(preview,caption);
+   caption.append(title,download);
    if(item.description){const desc=document.createElement('p');desc.className='resource-description';desc.textContent=item.description;article.append(desc)}
+   article.append(preview,caption);
    list.append(article);
   });
   document.getElementById('resources-empty').hidden=resources.length>0;
