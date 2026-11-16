@@ -144,7 +144,7 @@
     previousShape = shape;
     shape = (shape + 1) % 7;
     // Switch the entire silhouette together; only the color travels as a wave.
-    morph = 1;
+    morph = reduceMotion.matches ? 1 : 0;
     // Start the color wave at the exact point clicked on the canvas.
     const rect = canvas.getBoundingClientRect();
     const clickX = e.clientX - rect.left - width * .53;
