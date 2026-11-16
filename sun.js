@@ -82,6 +82,16 @@
     for (const p of particles) {
       const radius = boundary(p.a, previousShape) * (1 - blend) + boundary(p.a, shape) * blend;
       const edge = (radius - p.d) * baseRadius;
+      // Keep every particle's color synchronized, even while hidden outside
+      // the morphing silhouette. Otherwise newly revealed edge dots can flash
+      // an old palette before the click-origin wave reaches them.
+      if (ripple) {
+        const distance = Math.hypot(p.x - ripple.x, p.y - ripple.y);
+        const transition = smooth(clamp((ripple.distance - distance) / ripple.softness, 0, 1));
+        const target = paletteColor(ripple.to, clamp(p.d, 0, 1));
+        const source = ripple.startColors.get(p) || p.color;
+        p.color = mixColor(source, target, transition);
+      }
       if (edge <= 0) continue;
       const alpha = smooth(clamp(edge / 12, 0, 1));
       const px = cx + p.x * breath, py = cy + p.y * breath;
@@ -95,15 +105,6 @@
         p.vx = (p.vx - p.dx * .075) * .79;
         p.vy = (p.vy - p.dy * .075) * .79;
         p.dx += p.vx; p.dy += p.vy;
-      }
-      if (ripple) {
-        const distance = Math.hypot(p.x - ripple.x, p.y - ripple.y);
-        const transition = smooth(clamp((ripple.distance - distance) / ripple.softness, 0, 1));
-        const target = paletteColor(ripple.to, clamp(p.d, 0, 1));
-        // Snapshot each particle's actual color at click time, so even rapid
-        // repeated clicks produce a continuous transition with no color jumps.
-        const source = ripple.startColors.get(p) || p.color;
-        p.color = mixColor(source, target, transition);
       }
       const [red, green, blue] = p.color;
       ctx.fillStyle = `rgba(${red},${green},${blue},${alpha})`;
