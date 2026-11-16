@@ -93,7 +93,18 @@
         p.color = mixColor(source, target, transition);
       }
       if (edge <= 0) continue;
-      const alpha = smooth(clamp(edge / 12, 0, 1));
+      // Dots that were outside the shape when the click happened must not
+      // reveal a parked color. Reveal them only as the color wave reaches them.
+      let reveal = 1;
+      if (ripple) {
+        const oldEdge = (boundary(p.a, ripple.originShape) - p.d) * baseRadius;
+        if (oldEdge <= 0) {
+          const distance = Math.hypot(p.x - ripple.x, p.y - ripple.y);
+          reveal = smooth(clamp((ripple.distance - distance) / ripple.softness, 0, 1));
+        }
+      }
+      if (reveal <= 0) continue;
+      const alpha = smooth(clamp(edge / 12, 0, 1)) * reveal;
       const px = cx + p.x * breath, py = cy + p.y * breath;
       if (!reduceMotion.matches) {
         const dx = px + p.dx - pointer.x, dy = py + p.dy - pointer.y;
@@ -153,7 +164,7 @@
       const startColors = new Map(particles.map(p => [p, p.color.slice()]));
       // Include all possible dots, including those revealed by the next blob shape.
       const maxDistance = Math.max(...particles.map(p => Math.hypot(p.x - clickX, p.y - clickY)));
-      ripple = { x: clickX, y: clickY, distance: 0, softness: 36, speed: 310, maxDistance, to: next, startColors };
+      ripple = { x: clickX, y: clickY, distance: 0, softness: 36, speed: 310, maxDistance, to: next, startColors, originShape: previousShape };
     }
     button.setAttribute('aria-label', `Halftone sun, shape ${shape + 1} of 7. Activate to change shape and color.`);
     draw();
