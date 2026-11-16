@@ -93,7 +93,7 @@
         p.color = mixColor(source, target, transition);
       }
       if (edge <= 0) continue;
-      // Shape morphs independently of the color wave. Newly exposed dots
+      // Newly exposed dots
       // immediately use the destination palette so no parked old colors show.
       // Crucially, do not mask their visibility by the ripple position.
       if (ripple && (boundary(p.a, ripple.originShape) - p.d) * baseRadius <= 0) {
@@ -143,7 +143,8 @@
   button.addEventListener('click', e => {
     previousShape = shape;
     shape = (shape + 1) % 7;
-    morph = reduceMotion.matches ? 1 : 0;
+    // Switch the entire silhouette together; only the color travels as a wave.
+    morph = 1;
     // Start the color wave at the exact point clicked on the canvas.
     const rect = canvas.getBoundingClientRect();
     const clickX = e.clientX - rect.left - width * .53;
