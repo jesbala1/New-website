@@ -93,12 +93,9 @@
         p.color = mixColor(source, target, transition);
       }
       if (edge <= 0) continue;
-      // Newly exposed dots
-      // immediately use the destination palette so no parked old colors show.
-      // Crucially, do not mask their visibility by the ripple position.
-      if (ripple && (boundary(p.a, ripple.originShape) - p.d) * baseRadius <= 0) {
-        p.color = paletteColor(ripple.to, clamp(p.d, 0, 1));
-      }
+      // Newly revealed dots use the SAME spatial color field as every other dot.
+      // Never force a destination color at the edge: that creates a second,
+      // disconnected wave and makes the silhouette look as if it forms in pieces.
       const alpha = smooth(clamp(edge / 12, 0, 1));
       const px = cx + p.x * breath, py = cy + p.y * breath;
       if (!reduceMotion.matches) {
@@ -143,7 +140,7 @@
   button.addEventListener('click', e => {
     previousShape = shape;
     shape = (shape + 1) % 7;
-    // Switch the entire silhouette together; only the color travels as a wave.
+    // Morph the complete outline uniformly, independent of the color wave.
     morph = reduceMotion.matches ? 1 : 0;
     // Start the color wave at the exact point clicked on the canvas.
     const rect = canvas.getBoundingClientRect();
@@ -160,7 +157,7 @@
       const startColors = new Map(particles.map(p => [p, p.color.slice()]));
       // Include all possible dots, including those revealed by the next blob shape.
       const maxDistance = Math.max(...particles.map(p => Math.hypot(p.x - clickX, p.y - clickY)));
-      ripple = { x: clickX, y: clickY, distance: 0, softness: 36, speed: 310, maxDistance, to: next, startColors, originShape: previousShape };
+      ripple = { x: clickX, y: clickY, distance: 0, softness: 48, speed: 310, maxDistance, to: next, startColors, originShape: previousShape };
     }
     button.setAttribute('aria-label', `Halftone sun, shape ${shape + 1} of 7. Activate to change shape and color.`);
     draw();
