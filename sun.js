@@ -64,7 +64,7 @@
         const p = { x, y, d, a, dx: 0, dy: 0, vx: 0, vy: 0, color: paletteColor(currentPalette, clamp(d, 0, 1)) };
         // Keep the center-outward transition in progress when the viewport changes.
         if (ripple) {
-          const distance = Math.hypot(x, y);
+          const distance = Math.hypot(x - ripple.x, y - ripple.y);
           const transition = smooth(clamp((ripple.distance - distance) / ripple.softness, 0, 1));
           p.color = mixColor(paletteColor(currentPalette, clamp(d, 0, 1)), paletteColor(ripple.to, clamp(d, 0, 1)), transition);
         }
@@ -97,7 +97,7 @@
         p.dx += p.vx; p.dy += p.vy;
       }
       if (ripple) {
-        const distance = Math.hypot(p.x, p.y);
+        const distance = Math.hypot(p.x - ripple.x, p.y - ripple.y);
         const transition = smooth(clamp((ripple.distance - distance) / ripple.softness, 0, 1));
         const target = paletteColor(ripple.to, clamp(p.d, 0, 1));
         // Snapshot each particle's actual color at click time, so even rapid
@@ -137,8 +137,10 @@
     previousShape = shape;
     shape = (shape + 1) % 7;
     morph = reduceMotion.matches ? 1 : 0;
-    // The color ripple always starts at the SUN CENTER, independent of click position.
-    // This prevents the new palette appearing at an edge during a shape morph.
+    // Start the color wave at the exact point clicked on the canvas.
+    const rect = canvas.getBoundingClientRect();
+    const clickX = e.clientX - rect.left - width * .53;
+    const clickY = e.clientY - rect.top - height * .49;
     const target = (currentPalette + 1) % palettes.length;
     // The next click advances from the previous target, even mid-animation.
     const next = ripple ? (ripple.to + 1) % palettes.length : target;
@@ -149,8 +151,8 @@
     } else {
       const startColors = new Map(particles.map(p => [p, p.color.slice()]));
       // Include all possible dots, including those revealed by the next blob shape.
-      const maxDistance = baseRadius * 1.34;
-      ripple = { distance: 0, softness: 36, speed: 310, maxDistance, to: next, startColors };
+      const maxDistance = Math.max(...particles.map(p => Math.hypot(p.x - clickX, p.y - clickY)));
+      ripple = { x: clickX, y: clickY, distance: 0, softness: 36, speed: 310, maxDistance, to: next, startColors };
     }
     button.setAttribute('aria-label', `Halftone sun, shape ${shape + 1} of 7. Activate to change shape and color.`);
     draw();
